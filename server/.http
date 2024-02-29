@@ -31,3 +31,19 @@ Content-Type: application/json
     "url": "https://amazon.com",
     "description": "amazon web site ok"
 }
+
+###
+
+GET http://localhost:3000/users/juanita
+
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "juanita",
+    "password": "Assassinstcdsufds",
+    "fullname": "csac icjosidac avnsd"
+}
