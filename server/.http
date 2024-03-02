@@ -34,7 +34,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/users/juanita
+POST http://localhost:3000/users/adriane121000
+Content-Type: application/json
+
+{
+    "password": "Assassins.666"
+}
 
 
 ###

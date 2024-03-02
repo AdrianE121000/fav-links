@@ -1,4 +1,7 @@
 import { validateUser } from '../schema/users.js';
+import pkg from 'jsonwebtoken';
+
+const { sign } = pkg;
 
 export class UserControllers {
   constructor({ UserModel }) {
@@ -6,14 +9,21 @@ export class UserControllers {
   }
 
   getUser = async (req, res) => {
+    const { password } = req.body;
     const { username } = req.params;
 
-    const user = await this.UserModel.getUser({ username });
+    const [user] = await this.UserModel.getUser({ username });
 
-    if (user.length === 0)
+    if (user === undefined) {
       return res.status(404).json({ message: 'User Not Found' });
+    } else if (user.password !== password) {
+      return res.status(401).json({ message: 'Wrong password' });
+    }
 
-    res.json(user);
+    const token = sign({ username }, 'Stack', {
+      expiresIn: '2m',
+    });
+    res.json({ user, token });
   };
 
   createUser = async (req, res) => {
