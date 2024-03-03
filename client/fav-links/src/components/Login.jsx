@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { useNavigate } from 'react-router-dom';
 import { parseJwt } from '../lib/utils';
+import { loginUser } from '../lib/data';
 
 export function Login() {
   const { setUser, setLogged } = useContext(AppContext);
@@ -12,43 +13,34 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const data = {
       password: password,
     };
 
-    fetch(`http://localhost:3000/users/${username}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result?.message) {
-          setErr(true);
-        }
-        if (result.token) {
-          localStorage.setItem('token', result.token);
+    const result = await loginUser(username, data);
 
-          const { username } = result.user;
+    if (result?.message) {
+      setErr(true);
+    }
+    if (result.token) {
+      localStorage.setItem('token', result.token);
 
-          localStorage.setItem('user', username);
+      const { username } = result.user;
 
-          setUser(result.user.username);
+      localStorage.setItem('user', username);
 
-          setLogged(
-            parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
-          );
+      setUser(result.user.username);
 
-          navigate('/home');
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+      setLogged(
+        parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
+      );
+
+      navigate('/home');
+    }
+  }
 
   return (
     <div className='w-full max-w-xs mx-auto'>
