@@ -1,11 +1,11 @@
 import cors from 'cors';
 
-export const corsMiddleware = () =>
+const ACCEPTED_ORIGINS = ['http://localhost:5173'];
+
+export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) =>
   cors({
     origin: (origin, callback) => {
-      const ACCEPTED_ORIGINS = ['http://localhost:5173'];
-
-      if (ACCEPTED_ORIGINS.includes(origin)) {
+      if (acceptedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
