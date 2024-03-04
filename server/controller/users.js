@@ -34,9 +34,14 @@ export class UserControllers {
 
     const newUser = await this.UserModel.createUser({ input: result.data });
 
+    const { username } = result.data;
+
     if (newUser?.message)
       return res.status(400).json({ message: 'User Already Exist' });
 
-    res.status(201).json(newUser);
+    const token = sign({ username }, 'Stack', {
+      expiresIn: '2m',
+    });
+    res.status(201).json({ newUser, token });
   };
 }
