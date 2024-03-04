@@ -5,7 +5,7 @@ const connection = await mysql.createConnection(config);
 export class LinkModel {
   static async getLinks({ id }) {
     const [links] = await connection.query(
-      'SELECT title, url, description, created_at FROM links WHERE user_id = ?;',
+      'SELECT * FROM links WHERE user_id = ?;',
       [id]
     );
 
