@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Login } from '../components/Login';
-import SignUp from '../components/SignUp';
+import { SignUp } from '../components/SignUp';
 import { Router2 } from './Router2';
 import FavLinks from '../components/FavLinks';
 import { PublicRoutes } from './PublicRoutes';
