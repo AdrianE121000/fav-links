@@ -5,7 +5,7 @@ import { parseJwt } from '../lib/utils';
 import { loginUser } from '../lib/data';
 
 export function Login() {
-  const { setUser, setLogged } = useContext(AppContext);
+  const { setLogged } = useContext(AppContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -29,10 +29,10 @@ export function Login() {
       localStorage.setItem('token', result.token);
 
       const { username } = result.user;
+      const { id } = result.user;
 
       localStorage.setItem('user', username);
-
-      setUser(result.user.username);
+      localStorage.setItem('userID', id);
 
       setLogged(
         parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
