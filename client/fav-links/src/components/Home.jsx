@@ -1,14 +1,29 @@
-const Home = () => {
-  return (
-    <>
-      <h1 className='text-center text-4xl'>Home</h1>
-      <p className='text-center'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sequi
-        corporis odio eveniet veniam laborum nostrum soluta mollitia, ipsa sed
-        sit fuga expedita, magni amet! Illum praesentium earum libero in.
-      </p>
-    </>
-  );
-};
+import { useGetLinks } from '../hooks/useGetLinks';
+import { deleteLink } from '../lib/data';
+import { Card } from './Card';
 
-export default Home;
+export function Home() {
+  const userId = localStorage.getItem('userID');
+  const { links, loading, error } = useGetLinks({ userId });
+
+  async function onDelete(id) {
+    await deleteLink({ id });
+  }
+  function onEdit() {}
+
+  return (
+    <div>
+      {loading.current ? (
+        <h1>cargando</h1>
+      ) : error ? (
+        <h1>se produjo en error</h1>
+      ) : (
+        <Card
+          links={links}
+          onDelete={onDelete}
+          onEdit={onEdit}
+        />
+      )}
+    </div>
+  );
+}
