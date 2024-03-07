@@ -30,8 +30,10 @@ export function Login() {
 
       const { username } = result.user;
       const { id } = result.user;
+      const { fullname } = result.user;
 
       localStorage.setItem('user', username);
+      localStorage.setItem('fullname', fullname);
       localStorage.setItem('userID', id);
 
       setLogged(

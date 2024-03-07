@@ -4,7 +4,7 @@ import { Card } from './Card';
 
 export function Home() {
   const userId = localStorage.getItem('userID');
-  const { links, loading, error } = useGetLinks({ userId });
+  const { links, loading, error } = useGetLinks(userId);
 
   async function onDelete(id) {
     await deleteLink({ id });

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function useGetLinks({ id }) {
+export function useGetLinks(id) {
   const [links, setLinks] = useState([]);
   const [error, setError] = useState(false);
   const loading = useRef();
 
   useEffect(() => {
     loading.current = true;
-    fetch(`http://localhost:3000/links/5`)
+    fetch(`http://localhost:3000/links/${id}`)
       .then((res) => res.json())
       .then((json) => {
         setLinks(json);

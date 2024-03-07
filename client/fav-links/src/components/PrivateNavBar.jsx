@@ -10,6 +10,9 @@ export function PrivateNavBar() {
   const navigate = useNavigate();
   const { setLogged } = useContext(AppContext);
 
+  const username = localStorage.getItem('user');
+  const fullname = localStorage.getItem('fullname');
+
   const logOut = () => {
     localStorage.removeItem('token');
     setLogged(parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now());
@@ -96,9 +99,14 @@ export function PrivateNavBar() {
         <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50'>
           <div className='bg-white p-4 rounded-md shadow-lg'>
             <h2 className='text-lg font-bold'>Información del Usuario</h2>
-            <p>Nombre: John Doe</p>
-            <p>Username: johndoe123</p>
-            <button className='bg-blue-500 text-white px-4 py-2 rounded-md mr-2'>
+            <p>Nombre: {fullname}</p>
+            <p>Username: {username}</p>
+            <button
+              onClick={() => {
+                navigate('/user');
+                setShowModal(false);
+              }}
+              className='bg-blue-500 text-white px-4 py-2 rounded-md mr-2'>
               Editar Información
             </button>
             <button

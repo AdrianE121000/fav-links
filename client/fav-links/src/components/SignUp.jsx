@@ -5,7 +5,7 @@ import AppContext from '../context/Context';
 import { useNavigate } from 'react-router-dom';
 
 export function SignUp() {
-  const { setUser, setLogged } = useContext(AppContext);
+  const { setLogged } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -36,8 +36,8 @@ export function SignUp() {
         const { newUser } = result;
 
         localStorage.setItem('user', newUser[0].username);
-
-        setUser(newUser[0].username);
+        localStorage.setItem('userID', newUser[0].id);
+        localStorage.setItem('fullname', newUser[0].fullname);
 
         setLogged(
           parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()

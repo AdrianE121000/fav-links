@@ -1,10 +1,10 @@
-export function Card({ userLinks, onDelete, onEdit }) {
+export function Card({ links, onDelete, onEdit }) {
   return (
     <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-      {userLinks.length === 0 ? (
+      {links.length === 0 ? (
         <h1>no hay links</h1>
       ) : (
-        userLinks.map((link) => (
+        links.map((link) => (
           <div
             key={link.id}
             className='bg-gray-900 text-white shadow-md rounded-lg p-4 m-4'>
