@@ -64,3 +64,21 @@ export async function createLink({ data }) {
     console.log('error', error);
   }
 }
+
+export async function updateLink({ data, id }) {
+  try {
+    const res = await fetch(`http://localhost:3000/links/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error');
+  }
+}
