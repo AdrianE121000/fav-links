@@ -18,7 +18,11 @@ export function AddLinks() {
       user_id: Number(user_id),
     };
 
-    const [result] = await createLink({ data });
+    await createLink({ data });
+
+    setTitle('');
+    setDescription('');
+    setUrl('');
   }
   return (
     <>
