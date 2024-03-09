@@ -21,7 +21,7 @@ export class UserControllers {
     }
 
     const token = sign({ username }, 'Stack', {
-      expiresIn: '2m',
+      expiresIn: '150d',
     });
     res.json({ user, token });
   };
@@ -40,7 +40,7 @@ export class UserControllers {
       return res.status(400).json({ message: 'User Already Exist' });
 
     const token = sign({ username }, 'Stack', {
-      expiresIn: '2m',
+      expiresIn: '150d',
     });
     res.status(201).json({ newUser, token });
   };
