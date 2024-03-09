@@ -3,6 +3,7 @@ import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { parseJwt } from '../lib/utils';
 import { loginUser } from '../lib/data';
+import NavBar from './NavBar';
 
 export function Login() {
   const { setLogged } = useContext(AppContext);
@@ -46,6 +47,7 @@ export function Login() {
 
   return (
     <>
+      <NavBar />
       <div className='w-full max-w-xs mx-auto mt-20'>
         <form
           onSubmit={handleSubmit}
@@ -89,9 +91,9 @@ export function Login() {
             } text-red-600 mb-5 text-center`}>
             usuario o contraseña incorrectos, por favor verifiquelo
           </div>
-          <div className='flex items-center justify-between'>
+          <div className='flex items-center justify-between '>
             <button
-              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+              className='bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
               type='submit'>
               Sign In
             </button>

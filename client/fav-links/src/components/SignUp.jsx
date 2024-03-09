@@ -3,6 +3,7 @@ import { createUser } from '../lib/data';
 import { parseJwt } from '../lib/utils';
 import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
+import NavBar from './NavBar';
 
 export function SignUp() {
   const { setLogged } = useContext(AppContext);
@@ -52,6 +53,7 @@ export function SignUp() {
 
   return (
     <>
+      <NavBar />
       <div className='max-w-md mx-auto p-6 bg-gray-300 shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Crear cuenta</h2>
         <form onSubmit={handleSubmit}>
