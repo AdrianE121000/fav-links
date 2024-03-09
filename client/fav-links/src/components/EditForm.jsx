@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { updateLink } from '../lib/data';
 
-function EditForm({ id }) {
+function EditForm({ id, setShowModal }) {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [description, setDescription] = useState('');
@@ -15,15 +15,16 @@ function EditForm({ id }) {
       description,
     };
 
-    const result = await updateLink({ data, id });
+    await updateLink({ data, id });
 
-    console.log(result);
+    setShowModal(false);
   }
   return (
     <>
       <form
         onSubmit={handleSubmit}
         className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+        <h1 className='text-center text-3xl font-bold'>Update Link</h1>
         <div className='mb-4'>
           <label
             className='block text-gray-700 text-sm font-bold mb-2'
