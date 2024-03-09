@@ -5,10 +5,12 @@ import { Router2 } from './Router2';
 import FavLinks from '../components/FavLinks';
 import { PublicRoutes } from './PublicRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
+import NavBar from '../components/NavBar';
 
 export default function Router1() {
   return (
     <>
+      <NavBar />
       <Routes>
         <Route
           path='/'
