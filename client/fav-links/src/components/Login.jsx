@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { parseJwt } from '../lib/utils';
 import { loginUser } from '../lib/data';
 
@@ -45,56 +45,65 @@ export function Login() {
   }
 
   return (
-    <div className='w-full max-w-xs mx-auto'>
-      <form
-        onSubmit={handleSubmit}
-        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-        <div className='mb-4'>
-          <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='username'>
-            UsenName
-          </label>
-          <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            id='username'
-            required
-            type='username'
-            placeholder='UsenName'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className='mb-6'>
-          <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='password'>
-            Password
-          </label>
-          <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            id='password'
-            required
-            type='password'
-            placeholder='********'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div
-          className={`${
-            err ? 'block' : 'hidden'
-          } text-red-600 mb-5 text-center`}>
-          usuario o contraseña incorrectos, por favor verifiquelo
-        </div>
-        <div className='flex items-center justify-between'>
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
-            type='submit'>
-            Sign In
-          </button>
-        </div>
-      </form>
-    </div>
+    <>
+      <div className='w-full max-w-xs mx-auto mt-20'>
+        <form
+          onSubmit={handleSubmit}
+          className='bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+          <h2 className='text-2xl font-bold mb-4'>Iniciar Seccion</h2>
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='username'>
+              UsenName
+            </label>
+            <input
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              id='username'
+              required
+              type='username'
+              placeholder='UsenName'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className='mb-6'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='password'>
+              Password
+            </label>
+            <input
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              id='password'
+              required
+              type='password'
+              placeholder='********'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div
+            className={`${
+              err ? 'block' : 'hidden'
+            } text-red-600 mb-5 text-center`}>
+            usuario o contraseña incorrectos, por favor verifiquelo
+          </div>
+          <div className='flex items-center justify-between'>
+            <button
+              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+              type='submit'>
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className='text-center mt-2'>
+        <NavLink to='/signup'>
+          Aún no tienes una cuenta?{' '}
+          <span className='text-blue-500 hover:underline'>Crear cuenta</span>
+        </NavLink>
+      </div>
+    </>
   );
 }
