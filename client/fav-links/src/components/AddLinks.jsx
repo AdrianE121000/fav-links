@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createLink } from '../lib/data';
+import { Toaster, toast } from 'sonner';
 
 export function AddLinks() {
   const [title, setTitle] = useState('');
@@ -23,9 +24,12 @@ export function AddLinks() {
     setTitle('');
     setDescription('');
     setUrl('');
+
+    toast.success('Link agregado correctamente');
   }
   return (
     <>
+      <Toaster richColors />
       <div className='w-full max-w-md mx-auto mt-20'>
         <form
           onSubmit={handleSubmit}
