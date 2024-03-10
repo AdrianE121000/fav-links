@@ -15,10 +15,12 @@ export function SignUp() {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState(false);
+  const [noMatch, setNoMatch] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
+    setNoMatch(false);
     if (password === repeatPassword) {
       setError(false);
       const data = {
@@ -47,7 +49,7 @@ export function SignUp() {
         navigate('/home');
       }
     } else {
-      alert('Las contraseñas no coinciden');
+      setNoMatch(true);
     }
   }
 
@@ -84,10 +86,12 @@ export function SignUp() {
               placeholder='********'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                noMatch ? 'border-red-700' : ''
+              }`}
             />
           </div>
-          <div className='mb-4'>
+          <div className='mb-1'>
             <label
               htmlFor='repeatPassword'
               className='block text-sm font-medium text-gray-700'>
@@ -99,9 +103,16 @@ export function SignUp() {
               placeholder='********'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+                noMatch ? 'border-red-700' : ''
+              }`}
             />
           </div>
+          {noMatch && (
+            <div className={`text-sm text-red-700 ml-1 mb-2`}>
+              Las contraseñas no coinciden
+            </div>
+          )}
           <div className='mb-4'>
             <label
               htmlFor='fullName'
