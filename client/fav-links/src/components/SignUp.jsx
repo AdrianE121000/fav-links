@@ -74,6 +74,11 @@ export function SignUp() {
               className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
             />
           </div>
+          {error && (
+            <div className={`text-sm text-red-700 ml-1 mb-2`}>
+              Ya el usuario esta en uso, por favor elija otro
+            </div>
+          )}
           <div className='mb-4'>
             <label
               htmlFor='password'
