@@ -65,6 +65,18 @@ export async function createLink({ data }) {
   }
 }
 
+export async function getLinks(userId) {
+  try {
+    const res = await fetch(`http://localhost:3000/links/${userId}`);
+
+    const links = await res.json();
+
+    return links;
+  } catch (error) {
+    console.log('Se produjo un error', error);
+  }
+}
+
 export async function updateLink({ data, id }) {
   try {
     const res = await fetch(`http://localhost:3000/links/${id}`, {
