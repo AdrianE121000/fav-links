@@ -1,14 +1,33 @@
-import { useState } from 'react';
-import { deleteLink } from '../lib/data';
+import { useEffect, useState } from 'react';
+import { deleteLink, getLinks } from '../lib/data';
 import EditForm from './EditForm';
 import { CloseIcon } from './Icons';
+import { Toaster, toast } from 'sonner';
 
-export function Card({ links }) {
+export function Card() {
+  const userId = localStorage.getItem('userID');
+
   const [showModal, setShowModal] = useState(false);
   const [linkToUpadte, setLinkToUpdate] = useState();
+  const [userLinks, setUserLinks] = useState([]);
+
+  useEffect(() => {
+    async function getAllLinks() {
+      const links = await getLinks(userId);
+
+      setUserLinks(links);
+    }
+
+    getAllLinks();
+  }, [userId]);
 
   async function onDelete(id) {
     await deleteLink({ id });
+    const links = await getLinks(userId);
+
+    setUserLinks(links);
+
+    toast.success('Link deleted');
   }
   function onEdit(id) {
     setShowModal(true);
@@ -17,13 +36,15 @@ export function Card({ links }) {
 
   return (
     <>
-      {links.length === 0 && (
+      <Toaster richColors />
+
+      {userLinks.length === 0 && (
         <div className='flex justify-center items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
           <h1 className='mx-auto text-3xl font-bold'>no hay links</h1>
         </div>
       )}
       <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
-        {links.map((link) => (
+        {userLinks.map((link) => (
           <div
             key={link.id}
             className='bg-gray-800 text-white shadow-md rounded-lg p-4 m-4 '>
