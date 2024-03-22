@@ -19,7 +19,7 @@ const FavLinks = () => {
       <main className='w-screen h-screen'>
         <header
           className='text-white flex justify-center min-h-96 w-full h-full pt-0 bg-no-repeat bg-cover bg-center '
-          style={{ backgroundImage: "url('../../public/background.jpeg')" }}>
+          style={{ backgroundImage: "url('/background.jpeg')" }}>
           <div className='container text-center my-auto'>
             <h1 className='mb-1 text-6xl p-0 m-0'>Favorite Links</h1>
             <h1 className='mb-5'>
