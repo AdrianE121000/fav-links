@@ -3,6 +3,7 @@ import { deleteLink, getLinks } from '../lib/data';
 import EditForm from './EditForm';
 import { CloseIcon } from './Icons';
 import { Toaster, toast } from 'sonner';
+import { timeAgo } from '../lib/utils';
 
 export function Card() {
   const userId = localStorage.getItem('userID');
@@ -55,6 +56,7 @@ export function Card() {
               {link.title}
             </a>
             <p className='text-gray-300 line-clamp-5'>{link.description}</p>
+            <p>{timeAgo(link.created_at)}</p>
             <div className='mt-4 flex justify-between items-center'>
               <div>
                 <button
