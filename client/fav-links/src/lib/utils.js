@@ -1,3 +1,5 @@
+import { format } from 'timeago.js';
+
 export function parseJwt(token) {
   if (token === null) return false;
 
@@ -14,4 +16,8 @@ export function parseJwt(token) {
   );
 
   return JSON.parse(jsonPayload);
+}
+
+export function timeAgo(timestamp) {
+  return format(timestamp);
 }
