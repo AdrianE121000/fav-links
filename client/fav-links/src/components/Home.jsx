@@ -22,7 +22,7 @@ export function Home() {
     }
 
     getAllLinks();
-  }, [userId]);
+  }, [userId, showModal]);
 
   async function onDelete(id) {
     await deleteLink({ id });
@@ -35,8 +35,6 @@ export function Home() {
   function onEdit(id) {
     setShowModal(true);
     setLinkToUpdate(id);
-
-    //toast.success('Link edited');
   }
 
   return (

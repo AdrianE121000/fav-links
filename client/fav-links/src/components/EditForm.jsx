@@ -15,9 +15,15 @@ function EditForm({ id, setShowModal }) {
       description,
     };
 
-    await updateLink({ data, id });
+    const result = await updateLink({ data, id });
 
-    setShowModal(false);
+    if (result !== undefined) {
+      setShowModal(false);
+
+      return;
+    } else {
+      alert('ocurio un error');
+    }
   }
   return (
     <>
