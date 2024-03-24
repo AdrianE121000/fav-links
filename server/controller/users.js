@@ -1,5 +1,6 @@
 import { validateUser } from '../schema/users.js';
 import pkg from 'jsonwebtoken';
+import { EncryptPassword } from '../utils.js';
 
 const { sign } = pkg;
 
@@ -12,11 +13,13 @@ export class UserControllers {
     const { password } = req.body;
     const { username } = req.params;
 
+    const encryptedPassword = EncryptPassword(password);
+
     const [user] = await this.UserModel.getUser({ username });
 
     if (user === undefined) {
       return res.status(404).json({ message: 'User Not Found' });
-    } else if (user.password !== password) {
+    } else if (user.password !== encryptedPassword) {
       return res.status(401).json({ message: 'Wrong password' });
     }
 
@@ -32,7 +35,10 @@ export class UserControllers {
     if (result.error)
       return res.status(400).json({ error: JSON.parse(result.error.message) });
 
-    const newUser = await this.UserModel.createUser({ input: result.data });
+    const encryptedPassword = EncryptPassword(result.data.password);
+    const user = { ...result.data, password: encryptedPassword };
+
+    const newUser = await this.UserModel.createUser({ input: user });
 
     const { username } = result.data;
 
