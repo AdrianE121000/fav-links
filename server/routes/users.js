@@ -10,5 +10,7 @@ export const createUserRouter = ({ UserModel }) => {
 
   userRouter.post('/', userController.createUser);
 
+  userRouter.delete('/:id', userController.deleteUser);
+
   return userRouter;
 };

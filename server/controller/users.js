@@ -50,4 +50,14 @@ export class UserControllers {
     });
     res.status(201).json({ newUser, token });
   };
+
+  deleteUser = async (req, res) => {
+    const { id } = req.params;
+
+    const result = await this.UserModel.deleteUser({ id });
+
+    if (result) return res.json({ message: 'User Deleted' });
+
+    res.status(404).json({ message: 'User Not Found' });
+  };
 }

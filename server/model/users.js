@@ -35,4 +35,19 @@ export class UserModel {
 
     return user;
   }
+
+  static async deleteUser({ id }) {
+    try {
+      const [user] = await connection.query('DELETE FROM users WHERE id = ?;', [
+        id,
+      ]);
+
+      if (user.affectedRows === 1)
+        await connection.query('DELETE FROM links WHERE user_id = ?;', [id]);
+
+      return user.affectedRows === 1;
+    } catch (error) {
+      console.log('Se produjo un error!');
+    }
+  }
 }
