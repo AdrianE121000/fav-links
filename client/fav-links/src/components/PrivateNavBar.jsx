@@ -3,6 +3,8 @@ import { CloseIcon, MenuIcon, UserIcon } from './Icons';
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { parseJwt } from '../lib/utils';
+import { deleteUser } from '../lib/data';
+import { Toaster, toast } from 'sonner';
 
 export function PrivateNavBar() {
   const [showModal, setShowModal] = useState(false);
@@ -12,12 +14,27 @@ export function PrivateNavBar() {
 
   const username = localStorage.getItem('user');
   const fullname = localStorage.getItem('fullname');
+  const userID = localStorage.getItem('userID');
 
   const logOut = () => {
     localStorage.removeItem('token');
     setLogged(parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now());
     navigate('/');
   };
+
+  async function deleteAcount() {
+    const result = await deleteUser(userID);
+
+    if (result?.message) {
+      localStorage.removeItem('token');
+      setLogged(
+        parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
+      );
+      navigate('/');
+    } else {
+      toast.error('Halgo salio mal');
+    }
+  }
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -33,6 +50,7 @@ export function PrivateNavBar() {
 
   return (
     <>
+      <Toaster richColors />
       <nav className='bg-gray-800 p-4 flex items-center justify-between'>
         <div className='text-white font-bold text-lg md:ml-10'>Fav Links</div>
         <div
@@ -113,6 +131,11 @@ export function PrivateNavBar() {
               onClick={logOut}
               className='bg-red-500 text-white px-4 py-2 rounded-md'>
               Cerrar Sesión
+            </button>
+            <button
+              onClick={deleteAcount}
+              className='bg-red-500 text-white px-4 py-2 rounded-md'>
+              Borrar Cuenta
             </button>
             <button
               onClick={closeModal}
