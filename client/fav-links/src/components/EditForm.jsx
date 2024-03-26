@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { updateLink } from '../lib/data';
 
 function EditForm({ id, setShowModal }) {
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState();
+  const [url, setUrl] = useState();
+  const [description, setDescription] = useState();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const data = {
-      title,
-      url,
-      description,
-    };
+    const data = {};
+
+    if (title) data.title = title;
+    if (url) data.url = url;
+    if (description) data.description = description;
 
     const result = await updateLink({ data, id });
 
@@ -41,7 +41,6 @@ function EditForm({ id, setShowModal }) {
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             id='title'
             type='text'
-            required
             placeholder='Title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -57,7 +56,6 @@ function EditForm({ id, setShowModal }) {
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             id='url'
             type='url'
-            required
             placeholder='URL'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
@@ -73,7 +71,6 @@ function EditForm({ id, setShowModal }) {
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             id='description'
             placeholder='Description'
-            required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
