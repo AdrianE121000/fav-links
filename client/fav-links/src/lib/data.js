@@ -94,3 +94,18 @@ export async function updateLink({ data, id }) {
     console.log('error');
   }
 }
+
+export async function deleteUser(userId) {
+  console.log(userId);
+  try {
+    const res = await fetch(`http://localhost/users/${userId}`, {
+      method: 'DELETE',
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error');
+  }
+}
