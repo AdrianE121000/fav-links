@@ -2,12 +2,15 @@ import { Card } from './Card';
 import { Toaster, toast } from 'sonner';
 import { useEffect, useState } from 'react';
 import { deleteLink, getLinks } from '../lib/data';
+import { useNavigate } from 'react-router-dom';
 
 import EditForm from './EditForm';
 import { CloseIcon } from './Icons';
 
 export function Home() {
   const userId = localStorage.getItem('userID');
+
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
   const [linkToUpadte, setLinkToUpdate] = useState();
@@ -41,8 +44,13 @@ export function Home() {
     <>
       <Toaster richColors />
       {userLinks.length === 0 && (
-        <div className='flex justify-center items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
+        <div className='flex justify-center flex-col items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
           <h1 className='mx-auto text-3xl font-bold'>no hay links</h1>
+          <button
+            className='bg-gray-800 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-600 transition-colors duration-300 ease-in-out'
+            onClick={() => navigate('/add')}>
+            add link
+          </button>
         </div>
       )}
       <Card
