@@ -1,5 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { CloseIcon, MenuIcon, UserIcon } from './Icons';
+import {
+  CloseIcon,
+  DeleteIcon,
+  EditIcon,
+  LockIcon,
+  MenuIcon,
+  UserIcon,
+} from './Icons';
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { parseJwt } from '../lib/utils';
@@ -116,27 +123,33 @@ export function PrivateNavBar() {
       {showModal && (
         <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50'>
           <div className='bg-white p-4 rounded-md shadow-lg'>
-            <h2 className='text-lg font-bold'>Información del Usuario</h2>
+            <div className='flex flex-row gap-2'>
+              <h2 className='text-lg font-bold'>Información del Usuario</h2>
+              <button
+                className='hover:scale-150 transition duration-500 ease-in-out'
+                onClick={() => {
+                  navigate('/user');
+                  setShowModal(false);
+                }}>
+                <EditIcon />
+              </button>
+            </div>
             <p>Nombre: {fullname}</p>
             <p>Username: {username}</p>
-            <button
-              onClick={() => {
-                navigate('/user');
-                setShowModal(false);
-              }}
-              className='bg-blue-500 text-white px-4 py-2 rounded-md mr-2'>
-              Editar Información
-            </button>
-            <button
-              onClick={logOut}
-              className='bg-red-500 text-white px-4 py-2 rounded-md'>
-              Cerrar Sesión
-            </button>
-            <button
-              onClick={deleteAcount}
-              className='bg-red-500 text-white px-4 py-2 rounded-md'>
-              Borrar Cuenta
-            </button>
+            <div className='flex flex-row gap-4 mt-3'>
+              <button
+                onClick={logOut}
+                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
+                Cerrar Sesión
+                <LockIcon />
+              </button>
+              <button
+                onClick={deleteAcount}
+                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md  hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
+                Borrar Cuenta
+                <DeleteIcon />
+              </button>
+            </div>
             <button
               onClick={closeModal}
               className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-800 focus:outline-none'>
