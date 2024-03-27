@@ -19,13 +19,17 @@ export function AddLinks() {
       user_id: Number(user_id),
     };
 
-    await createLink({ data });
+    const result = await createLink({ data });
 
-    setTitle('');
-    setDescription('');
-    setUrl('');
+    if (result) {
+      setTitle('');
+      setDescription('');
+      setUrl('');
 
-    toast.success('Link agregado correctamente');
+      toast.success('Link agregado correctamente');
+    } else {
+      toast.error('algo salio mal');
+    }
   }
   return (
     <>
