@@ -1,4 +1,5 @@
 import { timeAgo } from '../lib/utils';
+import { DeleteIcon, EditIcon } from './Icons';
 
 export function Card({ userLinks, onDelete, onEdit }) {
   return (
@@ -16,16 +17,18 @@ export function Card({ userLinks, onDelete, onEdit }) {
             </a>
             <p className='text-gray-300 line-clamp-5'>{link.description}</p>
             <p>{timeAgo(link.created_at)}</p>
-            <div className='mt-4 flex items-center'>
+            <div className='mt-4 flex justify-between items-center gap-1'>
               <button
                 onClick={() => onDelete(link.id)}
-                className='rounded bg-red-500 text-white px-2 py-1 mr-2 hover:bg-red-900 hover:scale-110 transition duration-300 ease-in-out'>
+                className='flex items-center rounded bg-red-500 text-white text-lg px-1 py-1 hover:bg-red-900 hover:scale-110 transition duration-300 ease-in-out'>
                 Eliminar
+                <DeleteIcon />
               </button>
               <button
                 onClick={() => onEdit(link.id)}
-                className='rounded bg-blue-500 text-white px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-300 ease-in-out'>
+                className='flex items-center rounded bg-blue-500 text-white text-lg px-1 py-1 hover:bg-blue-900 hover:scale-110 transition duration-300 ease-in-out'>
                 Editar
+                <EditIcon />
               </button>
             </div>
           </div>
