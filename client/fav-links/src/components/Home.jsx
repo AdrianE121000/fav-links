@@ -1,6 +1,6 @@
 import { Card } from './Card';
 import { Toaster, toast } from 'sonner';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { deleteLink, getLinks } from '../lib/data';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,17 +14,20 @@ export function Home() {
 
   const [showModal, setShowModal] = useState(false);
   const [linkToUpadte, setLinkToUpdate] = useState();
+  const loading = useRef(true);
 
   const [userLinks, setUserLinks] = useState([]);
 
   useEffect(() => {
     async function getAllLinks() {
+      loading.current = true;
       const links = await getLinks(userId);
 
       setUserLinks(links);
     }
 
     getAllLinks();
+    loading.current = false;
   }, [userId, showModal]);
 
   async function onDelete(id) {
@@ -43,15 +46,21 @@ export function Home() {
   return (
     <>
       <Toaster richColors />
-      {userLinks.length === 0 && (
-        <div className='flex justify-center flex-col items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
-          <h1 className='mx-auto text-3xl font-bold'>no hay links</h1>
-          <button
-            className='bg-gray-800 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-600 hover:scale-110 transition duration-300 ease-in-out'
-            onClick={() => navigate('/add')}>
-            add link
-          </button>
+      {loading.current ? (
+        <div className='flex items-center justify-center h-screen'>
+          <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900'></div>
         </div>
+      ) : (
+        userLinks.length === 0 && (
+          <div className='flex justify-center flex-col items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
+            <h1 className='mx-auto text-3xl font-bold'>no hay links</h1>
+            <button
+              className='bg-gray-800 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-600 hover:scale-110 transition duration-300 ease-in-out'
+              onClick={() => navigate('/add')}>
+              add link
+            </button>
+          </div>
+        )
       )}
       <Card
         userLinks={userLinks}
