@@ -124,7 +124,7 @@ export function PrivateNavBar() {
         <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50'>
           <div className='bg-white p-4 rounded-md shadow-lg'>
             <div className='flex flex-row gap-2'>
-              <h2 className='text-lg font-bold'>Información del Usuario</h2>
+              <h2 className='text-lg font-bold'>User info</h2>
               <button
                 className='hover:scale-150 transition duration-500 ease-in-out'
                 onClick={() => {
@@ -134,19 +134,19 @@ export function PrivateNavBar() {
                 <EditIcon />
               </button>
             </div>
-            <p>Nombre: {fullname}</p>
+            <p>Name: {fullname}</p>
             <p>Username: {username}</p>
             <div className='flex flex-row gap-4 mt-3'>
               <button
                 onClick={logOut}
                 className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
-                Cerrar Sesión
+                Logout
                 <LockIcon />
               </button>
               <button
                 onClick={deleteAcount}
                 className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md  hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
-                Borrar Cuenta
+                Delete account
                 <DeleteIcon />
               </button>
             </div>

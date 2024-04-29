@@ -57,7 +57,7 @@ export function SignUp() {
     <>
       <NavBar />
       <div className='max-w-md mx-auto p-6 bg-gray-300 shadow-md rounded-md mt-20'>
-        <h2 className='text-2xl font-bold mb-4'>Crear cuenta</h2>
+        <h2 className='text-2xl font-bold mb-4'>Create an account</h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
@@ -76,7 +76,7 @@ export function SignUp() {
           </div>
           {error && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>
-              Ya el usuario esta en uso, por favor elija otro
+              The user is already taken, please choose another one
             </div>
           )}
           <div className='mb-4'>
@@ -115,7 +115,7 @@ export function SignUp() {
           </div>
           {noMatch && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>
-              Las contraseñas no coinciden
+              Passwords don&apos;t match
             </div>
           )}
           <div className='mb-4'>
@@ -137,19 +137,19 @@ export function SignUp() {
             className={`${
               error ? 'block' : 'hidden'
             } text-red-600 mb-5 text-center`}>
-            Ya el usuario esta en uso, por favor elija otro
+            The user is already taken, please choose another one
           </div>
           <button
             type='submit'
             className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-indigo-300'>
-            Crear cuenta
+            Create an account
           </button>
         </form>
       </div>
       <div className='text-center mt-2'>
         <NavLink to='/signin'>
-          Ya tienes una cuenta?{' '}
-          <span className='text-blue-500 hover:underline'>Inicia seccion</span>
+          Already have an account?{' '}
+          <span className='text-blue-500 hover:underline'>Login</span>
         </NavLink>
       </div>
     </>

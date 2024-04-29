@@ -21,13 +21,13 @@ export function Card({ userLinks, onDelete, onEdit }) {
               <button
                 onClick={() => onDelete(link.id)}
                 className='flex items-center rounded bg-red-500 text-white text-lg px-1 py-1 hover:bg-red-900 hover:scale-110 transition duration-300 ease-in-out'>
-                Eliminar
+                Delete
                 <DeleteIcon />
               </button>
               <button
                 onClick={() => onEdit(link.id)}
                 className='flex items-center rounded bg-blue-500 text-white text-lg px-1 py-1 hover:bg-blue-900 hover:scale-110 transition duration-300 ease-in-out'>
-                Editar
+                Edit
                 <EditIcon />
               </button>
             </div>

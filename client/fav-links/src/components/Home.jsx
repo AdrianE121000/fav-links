@@ -53,7 +53,7 @@ export function Home() {
       ) : (
         userLinks.length === 0 && (
           <div className='flex justify-center flex-col items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
-            <h1 className='mx-auto text-3xl font-bold'>no hay links</h1>
+            <h1 className='mx-auto text-3xl font-bold'>There are no links</h1>
             <button
               className='bg-gray-800 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-600 hover:scale-110 transition duration-300 ease-in-out'
               onClick={() => navigate('/add')}>

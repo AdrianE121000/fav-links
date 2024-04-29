@@ -52,7 +52,7 @@ export function Login() {
         <form
           onSubmit={handleSubmit}
           className='bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-          <h2 className='text-2xl font-bold mb-4'>Iniciar Seccion</h2>
+          <h2 className='text-2xl font-bold mb-4'>Login</h2>
           <div className='mb-4'>
             <label
               className='block text-gray-700 text-sm font-bold mb-2'
@@ -89,7 +89,7 @@ export function Login() {
             className={`${
               err ? 'block' : 'hidden'
             } text-red-600 mb-5 text-center`}>
-            usuario o contraseña incorrectos, por favor verifiquelo
+            incorrect username or password, please verify them
           </div>
           <div className='flex items-center justify-between '>
             <button
@@ -102,8 +102,8 @@ export function Login() {
       </div>
       <div className='text-center mt-2'>
         <NavLink to='/signup'>
-          Aún no tienes una cuenta?{' '}
-          <span className='text-blue-500 hover:underline'>Crear cuenta</span>
+          You don&apos;t have an account yet ?{' '}
+          <span className='text-blue-500 hover:underline'>SignUp</span>
         </NavLink>
       </div>
     </>

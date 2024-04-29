@@ -31,7 +31,7 @@ function EditForm({ id, setShowModal }) {
         onSubmit={handleSubmit}
         className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
         <h1 className='text-center text-3xl font-bold'>Update Link</h1>
-        <em>solo rellene los campos que desee cambiar</em>
+        <em>Just fill in the fields you want to change</em>
         <div className='mb-4'>
           <label
             className='block text-gray-700 text-sm font-bold mb-2'
@@ -80,7 +80,7 @@ function EditForm({ id, setShowModal }) {
           <button
             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
             type='submit'>
-            Aceptar
+            Accept
           </button>
         </div>
       </form>
