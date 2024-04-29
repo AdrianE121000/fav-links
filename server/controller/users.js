@@ -1,4 +1,4 @@
-import { validateUser } from '../schema/users.js';
+import { validateUser, validatePartialUser } from '../schema/users.js';
 import pkg from 'jsonwebtoken';
 import { EncryptPassword } from '../utils.js';
 
@@ -57,6 +57,29 @@ export class UserControllers {
     const result = await this.UserModel.deleteUser({ id });
 
     if (result) return res.json({ message: 'User Deleted' });
+
+    res.status(404).json({ message: 'User Not Found' });
+  };
+
+  updateUser = async (req, res) => {
+    const result = validatePartialUser(req.body);
+
+    if (result.error)
+      return res.status(400).json({ error: JSON.parse(result.error.message) });
+
+    const { id } = req.params;
+
+    const encryptedPassword = EncryptPassword(result.data?.password);
+    const user = { ...result.data, password: encryptedPassword };
+
+    const updatedUser = await this.UserModel.updateUser({
+      id,
+      input: user,
+    });
+
+    if (updatedUser) {
+      return res.json({ message: 'User Updated' });
+    }
 
     res.status(404).json({ message: 'User Not Found' });
   };

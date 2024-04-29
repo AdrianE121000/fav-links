@@ -50,4 +50,24 @@ export class UserModel {
       console.log('Se produjo un error!');
     }
   }
+
+  static async updateUser({ id, input }) {
+    const { username, password, fullname } = input;
+
+    const [user] = await connection.query('SELECT * FROM users WHERE id = ?;', [
+      id,
+    ]);
+
+    const [result] = await connection.query(
+      'UPDATE users SET username = ?, password = ?, fullname = ? WHERE id = ?;',
+      [
+        username === undefined ? user[0].username : username,
+        password === undefined ? user[0].password : password,
+        fullname === undefined ? user[0].fullname : fullname,
+        id,
+      ]
+    );
+
+    return result.affectedRows === 1;
+  }
 }

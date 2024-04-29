@@ -12,5 +12,7 @@ export const createUserRouter = ({ UserModel }) => {
 
   userRouter.delete('/:id', userController.deleteUser);
 
+  userRouter.patch('/:id', userController.updateUser);
+
   return userRouter;
 };
