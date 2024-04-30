@@ -33,54 +33,54 @@ export function AddLinks() {
   }
   return (
     <>
-      <Toaster richColors />
+      <Toaster
+        richColors
+        theme='dark'
+      />
       <div className='w-full max-w-md mx-auto mt-20'>
         <form
           onSubmit={handleSubmit}
-          className='bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+          className='bg-gray-800 text-white rounded px-8 pt-6 pb-8 mb-4'>
           <h1 className='text-center text-3xl font-bold'>Add Link</h1>
           <div className='mb-4'>
             <label
-              className='block text-gray-700 text-sm font-bold mb-2'
+              className='block text-sm font-bold mb-2'
               htmlFor='title'>
               Title:
             </label>
             <input
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
               id='title'
               type='text'
               required
-              placeholder='Title'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div className='mb-4'>
             <label
-              className='block text-gray-700 text-sm font-bold mb-2'
+              className='block text-sm font-bold mb-2'
               htmlFor='url'>
               URL:
             </label>
             <input
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
               id='url'
               type='url'
               required
-              placeholder='URL'
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
           <div className='mb-6'>
             <label
-              className='block text-gray-700 text-sm font-bold mb-2'
+              className='block text-sm font-bold mb-2'
               htmlFor='description'>
               Description:
             </label>
             <textarea
-              className='shadow resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow bg-gray-600 resize-none appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
               id='description'
-              placeholder='Description'
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}

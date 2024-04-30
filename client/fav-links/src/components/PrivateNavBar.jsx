@@ -57,7 +57,10 @@ export function PrivateNavBar() {
 
   return (
     <>
-      <Toaster richColors />
+      <Toaster
+        richColors
+        theme='dark'
+      />
       <nav className='bg-gray-800 p-4 flex items-center justify-between'>
         <div className='text-white font-bold text-lg md:ml-10'>Fav Links</div>
         <div
@@ -121,8 +124,8 @@ export function PrivateNavBar() {
       )}
 
       {showModal && (
-        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50'>
-          <div className='bg-white p-4 rounded-md shadow-lg'>
+        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center text-white bg-opacity-50 z-50'>
+          <div className='bg-gray-800 p-4 rounded-md shadow-lg'>
             <div className='flex flex-row gap-2'>
               <h2 className='text-lg font-bold'>User info</h2>
               <button

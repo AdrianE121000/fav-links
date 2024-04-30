@@ -45,19 +45,22 @@ export function Home() {
 
   return (
     <>
-      <Toaster richColors />
+      <Toaster
+        richColors
+        theme='dark'
+      />
       {loading.current ? (
         <div className='flex items-center justify-center h-screen'>
           <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900'></div>
         </div>
       ) : (
         userLinks.length === 0 && (
-          <div className='flex justify-center flex-col items-center bg-gray-400 mx-auto p-5 rounded mt-5 w-1/2'>
+          <div className='flex justify-center flex-col items-center bg-gray-800 text-white mx-auto p-5 rounded mt-5 w-1/2'>
             <h1 className='mx-auto text-3xl font-bold'>There are no links</h1>
             <button
-              className='bg-gray-800 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-600 hover:scale-110 transition duration-300 ease-in-out'
+              className='bg-gray-600 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-700 hover:scale-110 transition duration-300 ease-in-out'
               onClick={() => navigate('/add')}>
-              add link
+              Add link
             </button>
           </div>
         )

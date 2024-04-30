@@ -56,22 +56,21 @@ export function SignUp() {
   return (
     <>
       <NavBar />
-      <div className='max-w-md mx-auto p-6 bg-gray-300 shadow-md rounded-md mt-20'>
+      <div className='max-w-md mx-auto p-6 bg-gray-800 text-white shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Create an account</h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
               htmlFor='username'
-              className='block text-sm font-medium text-gray-700'>
-              Username
+              className='block text-sm font-medium '>
+              Username:
             </label>
             <input
               type='text'
               id='username'
-              placeholder='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
             />
           </div>
           {error && (
@@ -82,16 +81,15 @@ export function SignUp() {
           <div className='mb-4'>
             <label
               htmlFor='password'
-              className='block text-sm font-medium text-gray-700'>
-              Password
+              className='block text-sm font-medium '>
+              Password:
             </label>
             <input
               type='password'
               id='password'
-              placeholder='********'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -99,16 +97,15 @@ export function SignUp() {
           <div className='mb-1'>
             <label
               htmlFor='repeatPassword'
-              className='block text-sm font-medium text-gray-700'>
-              Repeat Password
+              className='block text-sm font-medium '>
+              Repeat Password:
             </label>
             <input
               type='password'
               id='repeatPassword'
-              placeholder='********'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
-              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -121,16 +118,15 @@ export function SignUp() {
           <div className='mb-4'>
             <label
               htmlFor='fullName'
-              className='block text-sm font-medium text-gray-700'>
-              Full Name
+              className='block text-sm font-medium mt-3'>
+              Full Name:
             </label>
             <input
               type='text'
               id='fullName'
-              placeholder='full name'
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
             />
           </div>
           <div
@@ -141,12 +137,12 @@ export function SignUp() {
           </div>
           <button
             type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-indigo-300'>
+            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md leading-tight focus:outline-none focus:shadow-outline focus:ring focus:ring-indigo-300'>
             Create an account
           </button>
         </form>
       </div>
-      <div className='text-center mt-2'>
+      <div className='text-center text-white mt-2'>
         <NavLink to='/signin'>
           Already have an account?{' '}
           <span className='text-blue-500 hover:underline'>Login</span>
