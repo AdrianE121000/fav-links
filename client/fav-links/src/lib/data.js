@@ -108,3 +108,21 @@ export async function deleteUser(userId) {
     console.log('error');
   }
 }
+
+export async function editUser({ data, userId }) {
+  try {
+    const res = await fetch(`http://localhost:3000/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error');
+  }
+}
