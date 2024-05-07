@@ -69,7 +69,12 @@ export class UserControllers {
 
     const { id } = req.params;
 
-    const encryptedPassword = EncryptPassword(result.data?.password);
+    let encryptedPassword = '';
+
+    if (result.data.password) {
+      encryptedPassword = EncryptPassword(result.data?.password);
+    }
+
     const user = { ...result.data, password: encryptedPassword };
 
     const updatedUser = await this.UserModel.updateUser({
@@ -79,8 +84,8 @@ export class UserControllers {
 
     if (updatedUser) {
       return res.json({ message: 'User Updated' });
+    } else {
+      return res.json({ message: 'User Already Exist' });
     }
-
-    res.status(404).json({ message: 'User Not Found' });
   };
 }

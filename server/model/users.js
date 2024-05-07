@@ -58,11 +58,20 @@ export class UserModel {
       id,
     ]);
 
+    const [userExist] = await connection.query(
+      'SELECT * FROM users WHERE username = ?;',
+      [username]
+    );
+
+    if (userExist[0]) {
+      return false;
+    }
+
     const [result] = await connection.query(
       'UPDATE users SET username = ?, password = ?, fullname = ? WHERE id = ?;',
       [
         username === undefined ? user[0].username : username,
-        password === undefined ? user[0].password : password,
+        password === '' ? user[0].password : password,
         fullname === undefined ? user[0].fullname : fullname,
         id,
       ]
