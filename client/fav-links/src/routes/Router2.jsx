@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from '../components/Home';
 import { PrivateNavBar } from '../components/PrivateNavBar';
 import { AddLinks } from '../components/AddLinks';
-import EditUser from '../components/EditUser';
+import { EditUser } from '../components/EditUser';
 
 export function Router2() {
   return (
