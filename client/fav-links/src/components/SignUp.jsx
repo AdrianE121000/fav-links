@@ -129,12 +129,6 @@ export function SignUp() {
               className='mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
             />
           </div>
-          <div
-            className={`${
-              error ? 'block' : 'hidden'
-            } text-red-600 mb-5 text-center`}>
-            The user is already taken, please choose another one
-          </div>
           <button
             type='submit'
             className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md leading-tight focus:outline-none focus:shadow-outline focus:ring focus:ring-indigo-300'>
