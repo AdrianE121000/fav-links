@@ -39,39 +39,37 @@ export function EditUser() {
         richColors
         theme='dark'
       />
-      <div className='max-w-md mx-auto p-6 bg-gray-300 shadow-md rounded-md mt-20'>
+      <div className='max-w-md mx-auto p-6 bg-gray-800 text-white shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Edit account</h2>
         <em>Just fill in the fields you want to change</em>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
               htmlFor='username'
-              className='block text-sm font-medium text-gray-700'>
+              className='block text-sm font-medium'>
               Username
             </label>
             <input
               type='text'
               id='username'
-              placeholder='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
             />
           </div>
 
           <div className='mb-4'>
             <label
               htmlFor='newPassword'
-              className='block text-sm font-medium text-gray-700'>
+              className='block text-sm font-medium '>
               New Password
             </label>
             <input
               type='password'
               id='newPassword'
-              placeholder='********'
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -79,16 +77,15 @@ export function EditUser() {
           <div className='mb-4'>
             <label
               htmlFor='repeatPassword'
-              className='block text-sm font-medium text-gray-700'>
+              className='block text-sm font-medium '>
               Repeat Password
             </label>
             <input
               type='password'
               id='repeatPassword'
-              placeholder='********'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
-              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -101,16 +98,15 @@ export function EditUser() {
           <div className='mb-4'>
             <label
               htmlFor='fullName'
-              className='block text-sm font-medium text-gray-700'>
+              className='block text-sm font-medium '>
               Full Name
             </label>
             <input
               type='text'
               id='fullName'
-              placeholder='full name'
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
             />
           </div>
           <button
