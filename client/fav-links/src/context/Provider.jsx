@@ -1,11 +1,21 @@
-import { parseJwt } from '../lib/utils';
-import { useState } from 'react';
+//import { parseJwt } from '../lib/utils';
+import { useEffect, useState } from 'react';
 import AppContext from './Context';
+import { verifyUser } from '../lib/data';
 
 export function AppProvider({ children }) {
-  const [logged, setLogged] = useState(
-    parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
-  );
+  const token = localStorage.getItem('token');
+  const [logged, setLogged] = useState();
+
+  useEffect(() => {
+    if (!token) {
+      setLogged(false);
+    } else {
+      const log = verifyUser({ token });
+
+      setLogged(log);
+    }
+  }, [token]);
 
   return (
     <AppContext.Provider value={{ logged, setLogged }}>

@@ -126,3 +126,17 @@ export async function editUser({ data, userId }) {
     console.log('error');
   }
 }
+
+export async function verifyUser({ token }) {
+  try {
+    const res = await fetch(`http://localhost:3000/users/verify/${token}`);
+
+    if (res.ok) {
+      return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.log('error');
+  }
+}
