@@ -8,6 +8,8 @@ export const createUserRouter = ({ UserModel }) => {
 
   userRouter.post('/:username', userController.getUser);
 
+  userRouter.get('/verify/:token', userController.verify);
+
   userRouter.post('/', userController.createUser);
 
   userRouter.delete('/:id', userController.deleteUser);
