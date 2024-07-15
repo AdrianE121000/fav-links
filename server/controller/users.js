@@ -1,8 +1,7 @@
 import { validateUser, validatePartialUser } from '../schema/users.js';
-import pkg from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { EncryptPassword } from '../utils.js';
-
-const { sign } = pkg;
+import { SECRET_JWT_KEY } from '../config.js';
 
 export class UserControllers {
   constructor({ UserModel }) {
@@ -23,10 +22,22 @@ export class UserControllers {
       return res.status(401).json({ message: 'Wrong password' });
     }
 
-    const token = sign({ username }, 'Stack', {
+    const token = jwt.sign({ username }, SECRET_JWT_KEY, {
       expiresIn: '150d',
     });
-    res.json({ user, token });
+    res.send({ user, token });
+  };
+
+  verify = (req, res) => {
+    const { token } = req.params;
+
+    if (token === undefined) return res.status(401);
+
+    const logged = jwt.verify(token, SECRET_JWT_KEY);
+
+    if (!logged) return res.status(401);
+
+    return res.status(201).send({ message: 'token is valid' });
   };
 
   createUser = async (req, res) => {
@@ -45,10 +56,10 @@ export class UserControllers {
     if (newUser?.message)
       return res.status(400).json({ message: 'User Already Exist' });
 
-    const token = sign({ username }, 'Stack', {
+    const token = jwt.sign({ username }, SECRET_JWT_KEY, {
       expiresIn: '150d',
     });
-    res.status(201).json({ newUser, token });
+    res.status(201).send({ newUser, token });
   };
 
   deleteUser = async (req, res) => {
