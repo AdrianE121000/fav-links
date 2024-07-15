@@ -5,3 +5,5 @@ export const config = {
   password: 'root',
   database: 'fav_links_db',
 };
+
+export const { SECRET_JWT_KEY = 'SECRET_JWT_KEY' } = process.env;
