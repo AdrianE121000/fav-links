@@ -97,7 +97,7 @@ export async function updateLink({ data, id }) {
 
 export async function deleteUser(userId) {
   try {
-    const res = await fetch(`http://localhost/users/${userId}`, {
+    const res = await fetch(`http://localhost:3000/users/${userId}`, {
       method: 'DELETE',
     });
 
