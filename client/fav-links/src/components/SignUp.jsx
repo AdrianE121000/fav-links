@@ -131,7 +131,7 @@ export function SignUp() {
           </div>
           <button
             type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md leading-tight focus:outline-none focus:shadow-outline focus:ring focus:ring-indigo-300'>
+            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition-all duration-500 ease-in-out'>
             Create an account
           </button>
         </form>

@@ -27,7 +27,7 @@ export function EditUser() {
     const result = await editUser({ data, userId });
 
     if (result.message === 'User Already Exist') {
-      toast.error('User Already Exist, try another');
+      toast.error('Username Already Exist, try another');
     } else {
       toast.success('User edited');
     }
@@ -111,7 +111,7 @@ export function EditUser() {
           </div>
           <button
             type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-indigo-300'>
+            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition duration-500 ease-in-out'>
             Acept
           </button>
         </form>

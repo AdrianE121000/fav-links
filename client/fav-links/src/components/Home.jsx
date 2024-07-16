@@ -58,7 +58,7 @@ export function Home() {
           <div className='flex justify-center flex-col items-center bg-gray-800 text-white mx-auto p-5 rounded mt-5 w-1/2'>
             <h1 className='mx-auto text-3xl font-bold'>There are no links</h1>
             <button
-              className='bg-gray-600 p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-700 hover:scale-110 transition duration-300 ease-in-out'
+              className='bg-gray-600 font-bold p-2 y-4 mt-5 rounded-lg text-white hover:bg-gray-700 hover:text-gray-950 hover:scale-110 transition duration-500 ease-in-out'
               onClick={() => navigate('/add')}>
               Add link
             </button>
@@ -79,7 +79,7 @@ export function Home() {
             />
             <button
               onClick={() => setShowModal(false)}
-              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-800 focus:outline-none'>
+              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
               <CloseIcon />
             </button>
           </div>

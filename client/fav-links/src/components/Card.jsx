@@ -8,11 +8,11 @@ export function Card({ userLinks, onDelete, onEdit }) {
         {userLinks.map((link) => (
           <div
             key={link.id}
-            className='bg-gray-800 text-white shadow-md rounded-lg p-4 m-4 '>
+            className='bg-gray-800 text-white rounded-lg p-4 m-4 shadow-sm shadow-white'>
             <a
               href={link.url}
               target='_blank'
-              className='text-lg font-bold hover:text-blue-700 line-clamp-3'>
+              className='text-lg font-bold hover:text-blue-700 line-clamp-3 duration-500 ease-in-out'>
               {link.title}
             </a>
             <p className='text-gray-300 line-clamp-5'>{link.description}</p>
@@ -20,13 +20,13 @@ export function Card({ userLinks, onDelete, onEdit }) {
             <div className='mt-4 flex justify-between items-center gap-1'>
               <button
                 onClick={() => onDelete(link.id)}
-                className='flex gap-2 items-center rounded bg-red-500 text-white text-lg px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-300 ease-in-out'>
+                className='flex gap-2 items-center font-semibold rounded bg-red-500 text-white text-lg px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-500 ease-in-out'>
                 Delete
                 <DeleteIcon />
               </button>
               <button
                 onClick={() => onEdit(link.id)}
-                className='flex gap-2 items-center rounded bg-blue-500 text-white text-lg px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-300 ease-in-out'>
+                className='flex gap-2 items-center font-semibold rounded bg-blue-500 text-white text-lg px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out'>
                 Edit
                 <EditIcon />
               </button>

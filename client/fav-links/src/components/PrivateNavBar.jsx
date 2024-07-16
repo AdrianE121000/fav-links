@@ -64,17 +64,17 @@ export function PrivateNavBar() {
       <nav className='bg-gray-800 p-4 flex items-center justify-between'>
         <div className='text-white font-bold text-lg md:ml-10'>Fav Links</div>
         <div
-          className={`hidden sm:flex space-x-4 items-center ${
+          className={`hidden sm:flex space-x-4 items-center gap-4 ${
             showMenu ? 'block' : 'hidden'
           }`}>
           <Link
             to='/home'
-            className='text-white hover:text-gray-300'>
+            className='text-white font-bold hover:text-gray-950 hover:scale-125 transition duration-500 ease-out'>
             Links
           </Link>
           <Link
             to='/add'
-            className='text-white hover:text-gray-300'>
+            className='text-white font-bold hover:text-gray-950 hover:scale-125 transition duration-500 ease-out'>
             Add Link
           </Link>
         </div>
@@ -84,7 +84,7 @@ export function PrivateNavBar() {
           }`}>
           <button
             onClick={openModal}
-            className='text-white hover:text-gray-300 focus:outline-none'>
+            className='text-white font-bold hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-out'>
             <UserIcon />
           </button>
         </div>
@@ -155,7 +155,7 @@ export function PrivateNavBar() {
             </div>
             <button
               onClick={closeModal}
-              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-800 focus:outline-none'>
+              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
               <CloseIcon />
             </button>
           </div>

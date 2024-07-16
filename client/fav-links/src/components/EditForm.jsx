@@ -75,7 +75,7 @@ function EditForm({ id, setShowModal }) {
         </div>
         <div className='flex items-center justify-between'>
           <button
-            className='bg-blue-500 hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+            className='bg-blue-500 hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded hover:scale-105 transition duration-500 ease-in-out'
             type='submit'>
             Accept
           </button>
