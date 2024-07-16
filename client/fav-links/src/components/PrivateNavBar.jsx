@@ -9,7 +9,6 @@ import {
 } from './Icons';
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
-import { parseJwt } from '../lib/utils';
 import { deleteUser } from '../lib/data';
 import { Toaster, toast } from 'sonner';
 
@@ -25,7 +24,7 @@ export function PrivateNavBar() {
 
   const logOut = () => {
     localStorage.removeItem('token');
-    setLogged(parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now());
+    setLogged(false);
     navigate('/');
   };
 
@@ -34,9 +33,7 @@ export function PrivateNavBar() {
 
     if (result?.message) {
       localStorage.removeItem('token');
-      setLogged(
-        parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
-      );
+      setLogged(false);
       navigate('/');
     } else {
       toast.error('Halgo salio mal');

@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { createUser } from '../lib/data';
-import { parseJwt } from '../lib/utils';
 import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
@@ -42,9 +41,7 @@ export function SignUp() {
         localStorage.setItem('userID', newUser[0].id);
         localStorage.setItem('fullname', newUser[0].fullname);
 
-        setLogged(
-          parseJwt(localStorage.getItem('token')).exp * 1000 > Date.now()
-        );
+        setLogged(true);
 
         navigate('/home');
       }
