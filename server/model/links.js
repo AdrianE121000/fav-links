@@ -16,13 +16,16 @@ export class LinkModel {
     const { title, url, description, user_id } = input;
 
     try {
-      await connection.query(
+      const [newLink] = await connection.query(
         'INSERT INTO links (title, url, description, user_id) VALUES (?, ?, ?, ?) ;',
         [title, url, description, user_id]
       );
 
+      const { insertId } = newLink;
+
       const [link] = await connection.query(
-        'SELECT title, url, description FROM links WHERE id = (SELECT MAX(id) FROM links);'
+        'SELECT title, url, description FROM links WHERE id = ?;',
+        [insertId]
       );
 
       return link[0];
