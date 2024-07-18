@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
-//import { parseJwt } from '../lib/utils';
 import { loginUser } from '../lib/data';
 import NavBar from './NavBar';
+import { LockIcon, OpenIcon } from './Icons';
 
 export function Login() {
   const { setLogged } = useContext(AppContext);
@@ -11,6 +11,7 @@ export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,6 +44,10 @@ export function Login() {
     }
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPass(!showPass);
+  };
+
   return (
     <>
       <NavBar />
@@ -66,7 +71,7 @@ export function Login() {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className='mb-6'>
+          <div className='mb-6 relative'>
             <label
               className='block  text-sm font-bold mb-2'
               htmlFor='password'>
@@ -76,10 +81,22 @@ export function Login() {
               className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'
               id='password'
               required
-              type='password'
+              type={showPass ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <div
+              className='cursor-pointer absolute inset-y-0 right-0 flex items-center px-2 top-7 hover:scale-110 transition duration-500 ease-in-out'
+              onClick={togglePasswordVisibility}>
+              {showPass ? (
+                <LockIcon
+                  h={5}
+                  w={5}
+                />
+              ) : (
+                <OpenIcon />
+              )}
+            </div>
           </div>
           <div
             className={`${

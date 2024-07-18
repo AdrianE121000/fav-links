@@ -3,6 +3,7 @@ import { createUser } from '../lib/data';
 import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
+import { LockIcon, OpenIcon } from './Icons';
 
 export function SignUp() {
   const { setLogged } = useContext(AppContext);
@@ -15,6 +16,7 @@ export function SignUp() {
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -50,6 +52,10 @@ export function SignUp() {
     }
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPass(!showPass);
+  };
+
   return (
     <>
       <NavBar />
@@ -75,14 +81,14 @@ export function SignUp() {
               The user is already taken, please choose another one
             </div>
           )}
-          <div className='mb-4'>
+          <div className='mb-4 relative'>
             <label
               htmlFor='password'
               className='block text-sm font-medium '>
               Password:
             </label>
             <input
-              type='password'
+              type={showPass ? 'text' : 'password'}
               id='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -90,15 +96,27 @@ export function SignUp() {
                 noMatch ? 'border-red-700' : ''
               }`}
             />
+            <div
+              className='cursor-pointer absolute inset-y-0 right-0 flex items-center px-2 top-7 hover:scale-110 transition duration-500 ease-in-out'
+              onClick={togglePasswordVisibility}>
+              {showPass ? (
+                <LockIcon
+                  h={5}
+                  w={5}
+                />
+              ) : (
+                <OpenIcon />
+              )}
+            </div>
           </div>
-          <div className='mb-1'>
+          <div className='mb-1 relative'>
             <label
               htmlFor='repeatPassword'
               className='block text-sm font-medium '>
               Repeat Password:
             </label>
             <input
-              type='password'
+              type={showPass ? 'text' : 'password'}
               id='repeatPassword'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
@@ -106,6 +124,18 @@ export function SignUp() {
                 noMatch ? 'border-red-700' : ''
               }`}
             />
+            <div
+              className='cursor-pointer absolute inset-y-0 right-0 flex items-center px-2 top-7 hover:scale-110 transition duration-500 ease-in-out'
+              onClick={togglePasswordVisibility}>
+              {showPass ? (
+                <LockIcon
+                  h={5}
+                  w={5}
+                />
+              ) : (
+                <OpenIcon />
+              )}
+            </div>
           </div>
           {noMatch && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>

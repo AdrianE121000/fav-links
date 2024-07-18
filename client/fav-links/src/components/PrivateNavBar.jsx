@@ -141,7 +141,10 @@ export function PrivateNavBar() {
                 onClick={logOut}
                 className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
                 Logout
-                <LockIcon />
+                <LockIcon
+                  h={6}
+                  w={6}
+                />
               </button>
               <button
                 onClick={deleteAcount}

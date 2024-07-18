@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { editUser } from '../lib/data';
 import { Toaster, toast } from 'sonner';
+import { LockIcon, OpenIcon } from './Icons';
 
 export function EditUser() {
   const [username, setUsername] = useState();
@@ -8,6 +9,7 @@ export function EditUser() {
   const [repeatPassword, setRepeatPassword] = useState();
   const [fullName, setFullName] = useState();
   const [noMatch, setNoMatch] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   const userId = localStorage.getItem('userID');
 
@@ -22,6 +24,8 @@ export function EditUser() {
 
     if (newPassword !== repeatPassword) {
       setNoMatch(true);
+
+      return;
     }
 
     const result = await editUser({ data, userId });
@@ -32,6 +36,10 @@ export function EditUser() {
       toast.success('User edited');
     }
   }
+
+  const togglePasswordVisibility = () => {
+    setShowPass(!showPass);
+  };
 
   return (
     <>
@@ -58,14 +66,14 @@ export function EditUser() {
             />
           </div>
 
-          <div className='mb-4'>
+          <div className='mb-4 relative'>
             <label
               htmlFor='newPassword'
               className='block text-sm font-medium '>
               New Password
             </label>
             <input
-              type='password'
+              type={showPass ? 'text' : 'password'}
               id='newPassword'
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -73,15 +81,27 @@ export function EditUser() {
                 noMatch ? 'border-red-700' : ''
               }`}
             />
+            <div
+              className='cursor-pointer absolute inset-y-0 right-0 flex items-center px-2 top-7 hover:scale-110 transition duration-500 ease-in-out'
+              onClick={togglePasswordVisibility}>
+              {showPass ? (
+                <LockIcon
+                  w={5}
+                  h={5}
+                />
+              ) : (
+                <OpenIcon />
+              )}
+            </div>
           </div>
-          <div className='mb-4'>
+          <div className='mb-4 relative'>
             <label
               htmlFor='repeatPassword'
               className='block text-sm font-medium '>
               Repeat Password
             </label>
             <input
-              type='password'
+              type={showPass ? 'text' : 'password'}
               id='repeatPassword'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
@@ -89,6 +109,18 @@ export function EditUser() {
                 noMatch ? 'border-red-700' : ''
               }`}
             />
+            <div
+              className='cursor-pointer absolute inset-y-0 right-0 flex items-center px-2 top-7 hover:scale-110 transition duration-500 ease-in-out'
+              onClick={togglePasswordVisibility}>
+              {showPass ? (
+                <LockIcon
+                  w={5}
+                  h={5}
+                />
+              ) : (
+                <OpenIcon />
+              )}
+            </div>
           </div>
           {noMatch && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>
