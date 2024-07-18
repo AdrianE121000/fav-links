@@ -31,13 +31,13 @@ export class UserControllers {
   verify = (req, res) => {
     const { token } = req.params;
 
-    if (token === undefined) return res.status(401);
+    try {
+      jwt.verify(token, SECRET_JWT_KEY);
 
-    const logged = jwt.verify(token, SECRET_JWT_KEY);
-
-    if (!logged) return res.status(401);
-
-    return res.status(201).send({ message: 'token is valid' });
+      res.status(201).send({ message: 'Token is Valid' });
+    } catch (error) {
+      res.status(401).send({ message: 'access unauthorized' });
+    }
   };
 
   createUser = async (req, res) => {
