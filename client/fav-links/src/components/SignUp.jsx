@@ -17,6 +17,10 @@ export function SignUp() {
   const [error, setError] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const [invalidInput, setInvalidInput] = useState({
+    isInvalid: false,
+    text: '',
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +38,8 @@ export function SignUp() {
 
       if (result?.message !== undefined) {
         setError(true);
+      } else if (result?.error !== undefined) {
+        setInvalidInput({ isInvalid: true, text: result.error[0].message });
       } else {
         localStorage.setItem('token', result.token);
 
@@ -140,6 +146,11 @@ export function SignUp() {
           {noMatch && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>
               Passwords don&apos;t match
+            </div>
+          )}
+          {invalidInput.isInvalid && (
+            <div className={`text-sm text-red-700 ml-1 mb-2`}>
+              {invalidInput.text}
             </div>
           )}
           <div className='mb-4'>
