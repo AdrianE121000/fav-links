@@ -77,6 +77,11 @@ export class UserModel {
       ]
     );
 
-    return result.affectedRows === 1;
+    const [updatedUser] = await connection.query(
+      'SELECT id, username, fullname FROM users WHERE id = ?;',
+      [id]
+    );
+
+    return updatedUser;
   }
 }

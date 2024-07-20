@@ -30,12 +30,16 @@ export function EditUser() {
 
     const result = await editUser({ data, userId });
 
-    if (result.message === 'User Already Exist') {
+    if (result?.message === 'User Already Exist') {
       toast.error('Username Already Exist, try another');
     } else if (result?.error !== undefined) {
       toast.error(result.error[0].message);
     } else {
       toast.success('User edited');
+
+      localStorage.setItem('userId', result[0].id);
+      localStorage.setItem('user', result[0].username);
+      localStorage.setItem('fullname', result[0].fullname);
     }
   }
 

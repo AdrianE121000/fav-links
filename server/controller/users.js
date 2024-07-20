@@ -93,10 +93,10 @@ export class UserControllers {
       input: user,
     });
 
-    if (updatedUser) {
-      return res.json({ message: 'User Updated' });
-    } else {
+    if (!updatedUser) {
       return res.json({ message: 'User Already Exist' });
+    } else {
+      return res.json(updatedUser);
     }
   };
 }
