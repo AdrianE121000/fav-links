@@ -4,10 +4,10 @@ import { Toaster, toast } from 'sonner';
 import { LockIcon, OpenIcon } from './Icons';
 
 export function EditUser() {
-  const [username, setUsername] = useState();
-  const [newPassword, setNewPassword] = useState();
-  const [repeatPassword, setRepeatPassword] = useState();
-  const [fullName, setFullName] = useState();
+  const [username, setUsername] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [noMatch, setNoMatch] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
@@ -32,6 +32,8 @@ export function EditUser() {
 
     if (result.message === 'User Already Exist') {
       toast.error('Username Already Exist, try another');
+    } else if (result?.error !== undefined) {
+      toast.error(result.error[0].message);
     } else {
       toast.success('User edited');
     }

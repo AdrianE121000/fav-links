@@ -4,6 +4,7 @@ import AppContext from '../context/Context';
 import { useNavigate, NavLink } from 'react-router-dom';
 import NavBar from './NavBar';
 import { LockIcon, OpenIcon } from './Icons';
+import { Toaster, toast } from 'sonner';
 
 export function SignUp() {
   const { setLogged } = useContext(AppContext);
@@ -17,10 +18,6 @@ export function SignUp() {
   const [error, setError] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const [invalidInput, setInvalidInput] = useState({
-    isInvalid: false,
-    text: '',
-  });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -39,7 +36,7 @@ export function SignUp() {
       if (result?.message !== undefined) {
         setError(true);
       } else if (result?.error !== undefined) {
-        setInvalidInput({ isInvalid: true, text: result.error[0].message });
+        toast.error(result.error[0].message);
       } else {
         localStorage.setItem('token', result.token);
 
@@ -65,6 +62,10 @@ export function SignUp() {
   return (
     <>
       <NavBar />
+      <Toaster
+        richColors
+        theme='dark'
+      />
       <div className='max-w-md mx-auto p-6 bg-gray-800 text-white shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Create an account</h2>
         <form onSubmit={handleSubmit}>
@@ -146,11 +147,6 @@ export function SignUp() {
           {noMatch && (
             <div className={`text-sm text-red-700 ml-1 mb-2`}>
               Passwords don&apos;t match
-            </div>
-          )}
-          {invalidInput.isInvalid && (
-            <div className={`text-sm text-red-700 ml-1 mb-2`}>
-              {invalidInput.text}
             </div>
           )}
           <div className='mb-4'>
