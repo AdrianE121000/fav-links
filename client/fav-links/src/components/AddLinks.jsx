@@ -21,14 +21,14 @@ export function AddLinks() {
 
     const result = await createLink({ data });
 
-    if (result) {
+    if (result?.error) {
+      toast.error(result.error[0].message);
+    } else {
       setTitle('');
       setDescription('');
       setUrl('');
 
       toast.success('Link agregado correctamente');
-    } else {
-      toast.error('algo salio mal');
     }
   }
   return (
@@ -66,7 +66,6 @@ export function AddLinks() {
             <input
               className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
               id='url'
-              type='url'
               required
               value={url}
               onChange={(e) => setUrl(e.target.value)}

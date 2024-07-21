@@ -60,7 +60,7 @@ export function Login() {
             <label
               className='block  text-sm font-bold mb-2'
               htmlFor='username'>
-              UsenName:
+              UserName:
             </label>
             <input
               className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'

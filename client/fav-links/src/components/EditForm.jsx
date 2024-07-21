@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { updateLink } from '../lib/data';
+import { Toaster, toast } from 'sonner';
 
 function EditForm({ id, setShowModal }) {
-  const [title, setTitle] = useState();
-  const [url, setUrl] = useState();
-  const [description, setDescription] = useState();
+  const [title, setTitle] = useState('');
+  const [url, setUrl] = useState('');
+  const [description, setDescription] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,16 +18,21 @@ function EditForm({ id, setShowModal }) {
 
     const result = await updateLink({ data, id });
 
-    if (result !== undefined) {
+    if (result?.error) {
+      toast.error(result.error[0].message);
+    } else {
+      toast.success('Link updated');
       setShowModal(false);
 
       return;
-    } else {
-      alert('ocurio un error');
     }
   }
   return (
     <>
+      <Toaster
+        richColors
+        theme='dark'
+      />
       <form
         onSubmit={handleSubmit}
         className='bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
@@ -55,7 +61,6 @@ function EditForm({ id, setShowModal }) {
           <input
             className='bg-gray-600 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline'
             id='url'
-            type='url'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
