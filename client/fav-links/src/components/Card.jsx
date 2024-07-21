@@ -2,10 +2,12 @@ import { timeAgo } from '../lib/utils';
 import { DeleteIcon, EditIcon } from './Icons';
 
 export function Card({ userLinks, onDelete, onEdit }) {
+  const sortedLinks = userLinks.sort((a, b) => b.id - a.id);
+
   return (
     <>
       <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-        {userLinks.map((link) => (
+        {sortedLinks.map((link) => (
           <div
             key={link.id}
             className='bg-gray-800 text-white rounded-lg p-4 m-4 shadow-sm shadow-white'>
