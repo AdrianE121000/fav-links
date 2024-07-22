@@ -122,7 +122,7 @@ export function PrivateNavBar() {
 
       {showModal && (
         <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center text-white bg-opacity-50 z-50'>
-          <div className='bg-gray-800 p-4 rounded-md shadow-lg'>
+          <div className='bg-gray-800 p-4 rounded-md shadow-sm shadow-white'>
             <div className='flex flex-row gap-2'>
               <h2 className='text-lg font-bold'>User info</h2>
               <button

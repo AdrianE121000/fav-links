@@ -17,7 +17,7 @@ export function Card({ userLinks, onDelete, onEdit }) {
               className='text-lg font-bold hover:text-blue-700 line-clamp-3 duration-500 ease-in-out'>
               {link.title}
             </a>
-            <p className='text-gray-300 line-clamp-5'>{link.description}</p>
+            <p className='text-gray-300 line-clamp-1'>{link.description}</p>
             <p>{timeAgo(link.created_at)}</p>
             <div className='mt-4 flex justify-between items-center gap-1'>
               <button
