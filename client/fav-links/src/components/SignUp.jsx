@@ -66,7 +66,7 @@ export function SignUp() {
         richColors
         theme='dark'
       />
-      <div className='max-w-md mx-auto p-6 bg-gray-800 text-white shadow-md rounded-md mt-20'>
+      <div className='max-w-xs sm:max-w-md mx-auto p-6 bg-neutral-800 text-white shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Create an account</h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
@@ -80,7 +80,7 @@ export function SignUp() {
               id='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className='mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
+              className='mt-1 bg-neutral-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
             />
           </div>
           {error && (
@@ -99,7 +99,7 @@ export function SignUp() {
               id='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
+              className={`mt-1 bg-neutral-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -127,7 +127,7 @@ export function SignUp() {
               id='repeatPassword'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
-              className={`mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
+              className={`mt-1 bg-neutral-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -160,12 +160,12 @@ export function SignUp() {
               id='fullName'
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className='mt-1 bg-gray-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
+              className='mt-1 bg-neutral-600 block w-full px-3 py-2 border rounded-md shadow-sm leading-tight focus:outline-none focus:shadow-outline sm:text-sm'
             />
           </div>
           <button
             type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition-all duration-500 ease-in-out'>
+            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700'>
             Create an account
           </button>
         </form>

@@ -53,7 +53,7 @@ export function EditUser() {
         richColors
         theme='dark'
       />
-      <div className='max-w-md mx-auto p-6 bg-gray-800 text-white shadow-md rounded-md mt-20'>
+      <div className='max-w-xs sm:max-w-md mx-auto p-6 bg-neutral-800 text-white shadow-md rounded-md mt-20'>
         <h2 className='text-2xl font-bold mb-4'>Edit account</h2>
         <em>Just fill in the fields you want to change</em>
         <form onSubmit={handleSubmit}>
@@ -68,7 +68,7 @@ export function EditUser() {
               id='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className='bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='bg-neutral-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
             />
           </div>
 
@@ -83,7 +83,7 @@ export function EditUser() {
               id='newPassword'
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className={`bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`bg-neutral-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -111,7 +111,7 @@ export function EditUser() {
               id='repeatPassword'
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
-              className={`bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+              className={`bg-neutral-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
                 noMatch ? 'border-red-700' : ''
               }`}
             />
@@ -144,12 +144,12 @@ export function EditUser() {
               id='fullName'
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className='bg-gray-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+              className='bg-neutral-600 mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
             />
           </div>
           <button
             type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition duration-500 ease-in-out'>
+            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md hover:scale-105 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700'>
             Acept
           </button>
         </form>

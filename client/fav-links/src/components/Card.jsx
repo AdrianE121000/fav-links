@@ -10,7 +10,7 @@ export function Card({ userLinks, onDelete, onEdit }) {
         {sortedLinks.map((link) => (
           <div
             key={link.id}
-            className='bg-gray-800 text-white rounded-lg p-4 m-4 shadow-sm shadow-white'>
+            className='bg-neutral-800 text-white rounded-lg p-2 m-4 shadow-sm shadow-white'>
             <a
               href={link.url}
               target='_blank'
@@ -22,13 +22,13 @@ export function Card({ userLinks, onDelete, onEdit }) {
             <div className='mt-4 flex justify-between items-center gap-1'>
               <button
                 onClick={() => onDelete(link.id)}
-                className='flex gap-2 items-center font-semibold rounded bg-red-500 text-white text-lg px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-500 ease-in-out'>
+                className='flex gap-2 items-center font-semibold rounded bg-red-500 text-white text-lg px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-red-700'>
                 Delete
                 <DeleteIcon />
               </button>
               <button
                 onClick={() => onEdit(link.id)}
-                className='flex gap-2 items-center font-semibold rounded bg-blue-500 text-white text-lg px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out'>
+                className='flex gap-2 items-center font-semibold rounded bg-blue-500 text-white text-lg px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700'>
                 Edit
                 <EditIcon />
               </button>

@@ -79,7 +79,7 @@ export function Home() {
             />
             <button
               onClick={() => setShowModal(false)}
-              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
+              className='absolute top-1.5 right-2 p-2 text-neutral-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
               <CloseIcon />
             </button>
           </div>

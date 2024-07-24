@@ -58,7 +58,7 @@ export function PrivateNavBar() {
         richColors
         theme='dark'
       />
-      <nav className='bg-gray-800 p-4 flex items-center justify-between'>
+      <nav className='bg-neutral-800 p-4 flex items-center justify-between'>
         <div className='text-white font-bold text-lg md:ml-10'>Fav Links</div>
         <div
           className={`hidden sm:flex space-x-4 items-center gap-4 ${
@@ -95,7 +95,7 @@ export function PrivateNavBar() {
       </nav>
 
       {showMenu && (
-        <div className='bg-gray-800 p-4 text-white text-lg w-full flex flex-col justify-center items-center gap-2'>
+        <div className='bg-neutral-800 p-4 text-white text-lg w-full flex flex-col justify-center items-center gap-2'>
           <div className='flex flex-col items-center justify-center '>
             <Link
               to='/home'
@@ -122,7 +122,7 @@ export function PrivateNavBar() {
 
       {showModal && (
         <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center text-white bg-opacity-50 z-50'>
-          <div className='bg-gray-800 p-4 rounded-md shadow-sm shadow-white'>
+          <div className='bg-neutral-800 p-4 rounded-md shadow-sm shadow-white'>
             <div className='flex flex-row gap-2'>
               <h2 className='text-lg font-bold'>User info</h2>
               <button
@@ -139,7 +139,7 @@ export function PrivateNavBar() {
             <div className='flex flex-row gap-4 mt-3'>
               <button
                 onClick={logOut}
-                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
+                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-red-700'>
                 Logout
                 <LockIcon
                   h={6}
@@ -148,14 +148,14 @@ export function PrivateNavBar() {
               </button>
               <button
                 onClick={deleteAcount}
-                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md  hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out'>
+                className='flex gap-2 bg-red-500 text-white px-4 py-2 rounded-md  hover:bg-red-800 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-red-700'>
                 Delete account
                 <DeleteIcon />
               </button>
             </div>
             <button
               onClick={closeModal}
-              className='absolute top-0 right-0 p-2 text-gray-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
+              className='absolute top-1.5 right-2 p-2 text-neutral-600 hover:text-gray-950 focus:outline-none hover:scale-150 transition duration-500 ease-in-out'>
               <CloseIcon />
             </button>
           </div>

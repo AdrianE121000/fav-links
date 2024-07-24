@@ -51,10 +51,10 @@ export function Login() {
   return (
     <>
       <NavBar />
-      <div className='w-full max-w-xs mx-auto mt-20'>
+      <div className='w-full max-w-xs sm:max-w-md mx-auto mt-20'>
         <form
           onSubmit={handleSubmit}
-          className='bg-gray-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+          className='bg-neutral-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
           <h2 className='text-2xl font-bold mb-4'>Login</h2>
           <div className='mb-4'>
             <label
@@ -63,7 +63,7 @@ export function Login() {
               UserName:
             </label>
             <input
-              className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'
               id='username'
               required
               type='username'
@@ -78,7 +78,7 @@ export function Login() {
               Password:
             </label>
             <input
-              className='shadow bg-gray-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'
               id='password'
               required
               type={showPass ? 'text' : 'password'}
@@ -106,7 +106,7 @@ export function Login() {
           </div>
           <div className='flex items-center justify-between '>
             <button
-              className='bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:scale-105 transition-all duration-500 ease-in-out'
+              className='bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:scale-105 transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700'
               type='submit'>
               Sign In
             </button>
