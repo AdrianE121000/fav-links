@@ -11,6 +11,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { deleteUser } from '../lib/data';
 import { Toaster, toast } from 'sonner';
+import { DropDown } from './DropDown';
 
 export function PrivateNavBar() {
   const [showModal, setShowModal] = useState(false);
@@ -74,6 +75,7 @@ export function PrivateNavBar() {
             className='text-white font-bold hover:text-gray-950 hover:scale-125 transition duration-500 ease-out'>
             Add Link
           </Link>
+          <DropDown />
         </div>
         <div
           className={`hidden sm:flex space-x-4 items-center mr-10 ${
@@ -100,15 +102,16 @@ export function PrivateNavBar() {
             <Link
               to='/home'
               onClick={toggleMenu}
-              className='text-white hover:text-gray-300'>
+              className='text-white font-bold hover:text-gray-950 hover:scale-125 transition duration-500 ease-out'>
               Links
             </Link>
             <Link
               to='/add'
               onClick={toggleMenu}
-              className='text-white hover:text-gray-300'>
+              className='text-white font-bold hover:text-gray-950 hover:scale-125 transition duration-500 ease-out'>
               Add Link
             </Link>
+            <DropDown />
           </div>
           <div>
             <button

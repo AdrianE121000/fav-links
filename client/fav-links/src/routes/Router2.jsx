@@ -3,6 +3,7 @@ import { Home } from '../components/Home';
 import { PrivateNavBar } from '../components/PrivateNavBar';
 import { AddLinks } from '../components/AddLinks';
 import { EditUser } from '../components/EditUser';
+import { Groups } from '../components/Groups';
 
 export function Router2() {
   return (
@@ -20,6 +21,10 @@ export function Router2() {
         <Route
           path='/user'
           element={<EditUser />}
+        />
+        <Route
+          path='/group/:goupId'
+          element={<Groups />}
         />
       </Routes>
     </>
