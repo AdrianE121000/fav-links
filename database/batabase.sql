@@ -23,6 +23,7 @@ CREATE TABLE links(
     url VARCHAR(255) NOT NULL,
     description TEXT,
     user_id INT(11) NOT NULL,
+    category_id INT(16),
     created_at timestamp NOT NULL DEFAULT current_timestamp
 );
 
@@ -33,3 +34,20 @@ ALTER TABLE links
     MODIFY id INT(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
 
 DESCRIBE links;
+
+CREATE TABLE categories(
+    id INT(16) NOT NULL,
+    user_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL
+);
+
+ALTER TABLE categories
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE categories
+    MODIFY id INT(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 1;
+
+ALTER TABLE categories
+    ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+DESCRIBE categories;
