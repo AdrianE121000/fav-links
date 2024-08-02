@@ -23,7 +23,7 @@ export function Router2() {
           element={<EditUser />}
         />
         <Route
-          path='/group/:goupId'
+          path='/group/:group_id'
           element={<Groups />}
         />
       </Routes>

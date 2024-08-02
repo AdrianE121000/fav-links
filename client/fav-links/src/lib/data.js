@@ -126,3 +126,63 @@ export async function editUser({ data, userId }) {
     console.log('error');
   }
 }
+
+export async function createGroup({ data, user_id }) {
+  try {
+    const res = await fetch(`http://localhost:3000/groups/${user_id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error: ', error);
+  }
+}
+
+export async function getGroups(userId) {
+  try {
+    const res = await fetch(`http://localhost:3000/groups/${userId}`);
+
+    const groups = await res.json();
+
+    return groups;
+  } catch (error) {
+    console.log('Se produjo un error', error);
+  }
+}
+
+export async function getGroupsLinks({ group_id }) {
+  try {
+    const res = await fetch(`http://localhost:3000/groups/links/${group_id}`);
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error: ', error);
+  }
+}
+
+export async function insertLinkInGroup({ data }) {
+  try {
+    const res = await fetch('http://localhost:3000/groups/', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log('error: ', error);
+  }
+}
