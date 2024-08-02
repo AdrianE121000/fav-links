@@ -78,7 +78,7 @@ export const DeleteIcon = () => {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-6 h-6'>
+      className='w-5 h-5'>
       <path
         strokeLinecap='round'
         strokeLinejoin='round'
@@ -136,6 +136,24 @@ export const IconDropDown = () => {
         fillRule='evenodd'
         d='M10 19a1 1 0 01-.707-.293l-7-7a1 1 0 111.414-1.414L10 16.586l6.293-6.293a1 1 0 111.414 1.414l-7 7A1 1 0 0110 19z'
         clipRule='evenodd'
+      />
+    </svg>
+  );
+};
+
+export const AddIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth={1.5}
+      stroke='currentColor'
+      className='size-6'>
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M12 4.5v15m7.5-7.5h-15'
       />
     </svg>
   );
