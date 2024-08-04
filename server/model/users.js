@@ -38,12 +38,12 @@ export class UserModel {
 
   static async deleteUser({ id }) {
     try {
+      await connection.query('DELETE FROM links WHERE user_id = ?;', [id]);
+      await connection.query('DELETE FROM categories WHERE user_id = ?;', [id]);
+
       const [user] = await connection.query('DELETE FROM users WHERE id = ?;', [
         id,
       ]);
-
-      if (user.affectedRows === 1)
-        await connection.query('DELETE FROM links WHERE user_id = ?;', [id]);
 
       return user.affectedRows === 1;
     } catch (error) {
