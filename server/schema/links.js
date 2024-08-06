@@ -14,8 +14,8 @@ const linkSchema = z.object({
   description: z
     .string()
     .regex(
-      /^[a-zA-Z0-9_ .*]+$/,
-      'The description field must only contain letters (uppercase, lowercase), numbers, underscore , points or asterisk'
+      /^[a-zA-Z0-9_ ,:.*]+$/,
+      'The description field must only contain letters (uppercase, lowercase), numbers, underscore , points, comma, two-points or asterisk'
     ),
   user_id: z.number(),
 });
