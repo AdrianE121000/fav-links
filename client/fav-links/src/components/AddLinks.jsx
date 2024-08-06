@@ -13,9 +13,9 @@ export function AddLinks() {
     e.preventDefault();
 
     const data = {
-      title: title,
-      url: url,
-      description: description,
+      title,
+      url,
+      description,
       user_id: Number(user_id),
     };
 

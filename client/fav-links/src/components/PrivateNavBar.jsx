@@ -10,7 +10,6 @@ import {
 import { useContext, useState } from 'react';
 import AppContext from '../context/Context';
 import { deleteUser } from '../lib/data';
-import { Toaster, toast } from 'sonner';
 import { DropDown } from './DropDown';
 
 export function PrivateNavBar() {
@@ -30,15 +29,11 @@ export function PrivateNavBar() {
   };
 
   async function deleteAcount() {
-    const result = await deleteUser(userID);
+    await deleteUser(userID);
 
-    if (result?.message) {
-      localStorage.removeItem('token');
-      setLogged(false);
-      navigate('/');
-    } else {
-      toast.error('Halgo salio mal');
-    }
+    localStorage.removeItem('token');
+    setLogged(false);
+    navigate('/');
   }
 
   const toggleMenu = () => {
@@ -55,10 +50,6 @@ export function PrivateNavBar() {
 
   return (
     <>
-      <Toaster
-        richColors
-        theme='dark'
-      />
       <nav className='bg-neutral-800 p-4 flex items-center justify-between'>
         <div className='text-white font-bold text-lg md:ml-10'>Fav Links</div>
         <div

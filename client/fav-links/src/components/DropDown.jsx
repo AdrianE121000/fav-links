@@ -26,7 +26,7 @@ export function DropDown() {
     if (result?.error) {
       toast.error(result.error[0].message);
     } else {
-      toast.success('Link agregado correctamente');
+      toast.success('Group created correctly');
       setName('');
       setShowModal(false);
     }

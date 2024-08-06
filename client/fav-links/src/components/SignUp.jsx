@@ -24,18 +24,17 @@ export function SignUp() {
 
     setNoMatch(false);
     if (password === repeatPassword) {
-      setError(false);
       const data = {
-        username: username,
-        password: password,
+        username,
+        password,
         fullname: fullName,
       };
 
       const result = await createUser(data);
 
-      if (result?.message !== undefined) {
+      if (result?.message) {
         setError(true);
-      } else if (result?.error !== undefined) {
+      } else if (result?.error) {
         toast.error(result.error[0].message);
       } else {
         localStorage.setItem('token', result.token);
@@ -51,7 +50,7 @@ export function SignUp() {
         navigate('/home');
       }
     } else {
-      setNoMatch(true);
+      return setNoMatch(true);
     }
   }
 

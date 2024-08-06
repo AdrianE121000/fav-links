@@ -19,7 +19,7 @@ export function Login() {
     e.preventDefault();
 
     const data = {
-      password: password,
+      password,
     };
 
     const result = await loginUser(username, data);
@@ -30,13 +30,13 @@ export function Login() {
     if (result.token) {
       localStorage.setItem('token', result.token);
 
-      const { username } = result.user;
-      const { id } = result.user;
-      const { fullname } = result.user;
+      // const { username } = result.user;
+      // const { id } = result.user;
+      // const { fullname } = result.user;
 
-      localStorage.setItem('user', username);
-      localStorage.setItem('fullname', fullname);
-      localStorage.setItem('userID', id);
+      localStorage.setItem('user', result.user.username);
+      localStorage.setItem('fullname', result.user.fullname);
+      localStorage.setItem('userID', result.user.id);
 
       setLogged(true);
 
