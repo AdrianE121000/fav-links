@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Toaster, toast } from 'sonner';
 
 export function GroupsModal({ setShowLinks }) {
-  const { group_id } = useParams();
+  const { group_name } = useParams();
   const [links, setLinks] = useState([]);
   const loading = useRef(true);
 
@@ -23,12 +23,13 @@ export function GroupsModal({ setShowLinks }) {
 
     getAllLinks();
     loading.current = false;
-  }, [user_id, group_id]);
+  }, [user_id]);
 
   async function addLinkToGroup(id) {
     const data = {
-      group_id,
+      group_name,
       link_id: id,
+      user_id
     };
 
     const result = await insertLinkInGroup({ data });

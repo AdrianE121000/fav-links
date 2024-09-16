@@ -157,9 +157,15 @@ export async function getGroups(userId) {
   }
 }
 
-export async function getGroupsLinks({ group_id }) {
+export async function getGroupsLinks({ data }) {
   try {
-    const res = await fetch(`http://localhost:3000/groups/links/${group_id}`);
+    const res = await fetch(`http://localhost:3000/groups`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
     const result = await res.json();
 
@@ -171,7 +177,7 @@ export async function getGroupsLinks({ group_id }) {
 
 export async function insertLinkInGroup({ data }) {
   try {
-    const res = await fetch('http://localhost:3000/groups/', {
+    const res = await fetch('http://localhost:3000/groups', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ import { Toaster, toast } from 'sonner';
 import { GroupsModal } from './GroupsModal';
 
 export function Groups() {
-  const { group_id } = useParams();
+  const { group_name } = useParams();
   const userId = localStorage.getItem('userID');
 
   const loading = useRef(true);
@@ -21,14 +21,18 @@ export function Groups() {
   useEffect(() => {
     async function getAllLinks() {
       loading.current = true;
-      const links = await getGroupsLinks({ group_id });
+      const data = {
+        group_name,
+        userId
+      }
+      const links = await getGroupsLinks({ data });
 
       setUserLinks(links);
     }
 
     getAllLinks();
     loading.current = false;
-  }, [group_id, showGroups]);
+  }, [group_name,userId, showGroups]);
 
   async function onDelete(id) {
     await deleteLink({ id });

@@ -96,7 +96,7 @@ export function DropDown() {
                 userGroups.map((group) => (
                   <Link
                     onClick={() => setIsOpen(false)}
-                    to={`/group/${group.id}`}
+                    to={`/group/${group.name}`}
                     key={group.id}
                     className='block line-clamp-1 max-w-[130px] p-1 text-sm rounded-xl text-white font-bold hover:scale-110 transition duration-500 ease-out'>
                     {group.name}
