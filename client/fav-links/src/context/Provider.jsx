@@ -1,8 +1,8 @@
-import AppContext from './Context';
-import { useVerify } from '../hook/useVerify';
+import AppContext from "./Context";
+import { useVerify } from "../hook/useVerify";
 
 export function AppProvider({ children }) {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   const { logged, setLogged } = useVerify({ token });
 

@@ -1,4 +1,4 @@
-import { validateLink, validatePartialLink } from '../schema/links.js';
+import { validateLink, validatePartialLink } from "../schema/links.js";
 
 export class LinkControllers {
   constructor({ LinkModel }) {
@@ -12,7 +12,7 @@ export class LinkControllers {
 
     if (link) return res.json(link);
 
-    res.status(404).json({ message: 'Link Not Found' });
+    res.status(404).json({ message: "Link Not Found" });
   };
 
   createLink = async (req, res) => {
@@ -32,9 +32,9 @@ export class LinkControllers {
 
     const result = await this.LinkModel.deleteLink({ id });
 
-    if (result) return res.json({ message: 'Link Deleted' });
+    if (result) return res.json({ message: "Link Deleted" });
 
-    res.status(404).json({ message: 'Link Not Found' });
+    res.status(404).json({ message: "Link Not Found" });
   };
 
   updateLink = async (req, res) => {
@@ -50,8 +50,8 @@ export class LinkControllers {
       input: result.data,
     });
 
-    if (updateLink) return res.json({ message: 'Link updated' });
+    if (updateLink) return res.json({ message: "Link updated" });
 
-    res.status(404).json({ message: 'Link Not Found' });
+    res.status(404).json({ message: "Link Not Found" });
   };
 }

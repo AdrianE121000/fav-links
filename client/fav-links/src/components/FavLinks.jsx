@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react';
-import AppContext from '../context/Context';
-import { NavLink, useNavigate } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+import { useContext, useEffect } from "react";
+import AppContext from "../context/Context";
+import { NavLink, useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const FavLinks = () => {
   const { logged } = useContext(AppContext);
@@ -9,26 +9,28 @@ const FavLinks = () => {
 
   useEffect(() => {
     if (logged) {
-      navigate('/home');
+      navigate("/home");
     }
   }, [navigate, logged]);
 
   return (
     <>
       <NavBar />
-      <main className='w-screen h-screen'>
+      <main className="w-screen h-screen">
         <header
-          className='text-white flex justify-center min-h-96 w-full h-full pt-0 bg-no-repeat bg-cover bg-center '
-          style={{ backgroundImage: "url('/background.webp')" }}>
-          <div className='container text-center my-auto'>
-            <h1 className='mb-1 text-6xl p-0 m-0 '>Favorite Links</h1>
-            <h1 className='mb-5'>
-              <em className='text-2xl'>Store your favorite links</em>
+          className="text-white flex justify-center min-h-96 w-full h-full pt-0 bg-no-repeat bg-cover bg-center "
+          style={{ backgroundImage: "url('/background.webp')" }}
+        >
+          <div className="container text-center my-auto">
+            <h1 className="mb-1 text-6xl p-0 m-0 ">Favorite Links</h1>
+            <h1 className="mb-5">
+              <em className="text-2xl">Store your favorite links</em>
             </h1>
             <NavLink
-              className='bg-gray-800 hover:bg-gray-950 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out'
-              to='/signin'>
-              {' '}
+              className="bg-gray-800 hover:bg-gray-950 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
+              to="/signin"
+            >
+              {" "}
               Let&apos;s get Started
             </NavLink>
           </div>

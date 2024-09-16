@@ -1,9 +1,9 @@
 export async function loginUser(username, data) {
   try {
     const res = await fetch(`http://localhost:3000/users/${username}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -12,16 +12,16 @@ export async function loginUser(username, data) {
 
     return result;
   } catch (err) {
-    console.log('e');
+    console.log("e");
   }
 }
 
 export async function createUser(data) {
   try {
-    const res = await fetch('http://localhost:3000/users', {
-      method: 'POST',
+    const res = await fetch("http://localhost:3000/users", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -30,29 +30,29 @@ export async function createUser(data) {
 
     return result;
   } catch (error) {
-    console.log('e');
+    console.log("e");
   }
 }
 
 export async function deleteLink({ id }) {
   try {
     const res = await fetch(`http://localhost:3000/links/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     const result = await res.json();
 
     return result;
   } catch (error) {
-    console.log('error');
+    console.log("error");
   }
 }
 
 export async function createLink({ data }) {
   try {
     const res = await fetch(`http://localhost:3000/links`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -61,7 +61,7 @@ export async function createLink({ data }) {
 
     return result;
   } catch (error) {
-    console.log('error', error);
+    console.log("error", error);
   }
 }
 
@@ -73,16 +73,16 @@ export async function getLinks(userId) {
 
     return links;
   } catch (error) {
-    console.log('Se produjo un error', error);
+    console.log("Se produjo un error", error);
   }
 }
 
 export async function updateLink({ data, id }) {
   try {
     const res = await fetch(`http://localhost:3000/links/${id}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -91,30 +91,30 @@ export async function updateLink({ data, id }) {
 
     return result;
   } catch (error) {
-    console.log('error');
+    console.log("error");
   }
 }
 
 export async function deleteUser(userId) {
   try {
     const res = await fetch(`http://localhost:3000/users/${userId}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
 
     const result = await res.json();
 
     return result;
   } catch (error) {
-    console.log('error');
+    console.log("error");
   }
 }
 
 export async function editUser({ data, userId }) {
   try {
     const res = await fetch(`http://localhost:3000/users/${userId}`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -123,16 +123,16 @@ export async function editUser({ data, userId }) {
 
     return result;
   } catch (error) {
-    console.log('error');
+    console.log("error");
   }
 }
 
 export async function createGroup({ data, user_id }) {
   try {
     const res = await fetch(`http://localhost:3000/groups/${user_id}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -141,7 +141,7 @@ export async function createGroup({ data, user_id }) {
 
     return result;
   } catch (error) {
-    console.log('error: ', error);
+    console.log("error: ", error);
   }
 }
 
@@ -153,16 +153,16 @@ export async function getGroups(userId) {
 
     return groups;
   } catch (error) {
-    console.log('Se produjo un error', error);
+    console.log("Se produjo un error", error);
   }
 }
 
 export async function getGroupsLinks({ data }) {
   try {
     const res = await fetch(`http://localhost:3000/groups`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -171,16 +171,16 @@ export async function getGroupsLinks({ data }) {
 
     return result;
   } catch (error) {
-    console.log('error: ', error);
+    console.log("error: ", error);
   }
 }
 
 export async function insertLinkInGroup({ data }) {
   try {
-    const res = await fetch('http://localhost:3000/groups', {
-      method: 'PATCH',
+    const res = await fetch("http://localhost:3000/groups", {
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -189,6 +189,6 @@ export async function insertLinkInGroup({ data }) {
 
     return result;
   } catch (error) {
-    console.log('error: ', error);
+    console.log("error: ", error);
   }
 }

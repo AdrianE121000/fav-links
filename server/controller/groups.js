@@ -1,4 +1,4 @@
-import { validateGroup } from '../schema/groups.js';
+import { validateGroup } from "../schema/groups.js";
 
 export class GroupControllers {
   constructor({ GroupModel }) {
@@ -39,16 +39,19 @@ export class GroupControllers {
     });
 
     if (insertedLink) {
-      return res.status(201).json({ message: 'Link added succesful' });
+      return res.status(201).json({ message: "Link added succesful" });
     }
 
-    res.status(400).json({ error: 'Error to add link to group' });
+    res.status(400).json({ error: "Error to add link to group" });
   };
 
   getLinksFromGroup = async (req, res) => {
     const { group_name, userId } = req.body;
 
-    const result = await this.GroupModel.getLinksFromGroup({ group_name, userId });
+    const result = await this.GroupModel.getLinksFromGroup({
+      group_name,
+      userId,
+    });
 
     if (result) return res.status(201).json(result);
   };

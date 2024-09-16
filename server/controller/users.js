@@ -1,7 +1,7 @@
-import { validateUser, validatePartialUser } from '../schema/users.js';
-import jwt from 'jsonwebtoken';
-import { EncryptPassword } from '../utils.js';
-import { SECRET_JWT_KEY } from '../config.js';
+import { validateUser, validatePartialUser } from "../schema/users.js";
+import jwt from "jsonwebtoken";
+import { EncryptPassword } from "../utils.js";
+import { SECRET_JWT_KEY } from "../config.js";
 
 export class UserControllers {
   constructor({ UserModel }) {
@@ -17,13 +17,13 @@ export class UserControllers {
     const [user] = await this.UserModel.getUser({ username });
 
     if (user === undefined) {
-      return res.status(404).json({ message: 'User Not Found' });
+      return res.status(404).json({ message: "User Not Found" });
     } else if (user.password !== encryptedPassword) {
-      return res.status(401).json({ message: 'Wrong password' });
+      return res.status(401).json({ message: "Wrong password" });
     }
 
     const token = jwt.sign({ username }, SECRET_JWT_KEY, {
-      expiresIn: '150d',
+      expiresIn: "150d",
     });
     res.send({ user, token });
   };
@@ -34,9 +34,9 @@ export class UserControllers {
     try {
       jwt.verify(token, SECRET_JWT_KEY);
 
-      res.status(201).send({ message: 'Token is Valid' });
+      res.status(201).send({ message: "Token is Valid" });
     } catch (error) {
-      res.status(401).send({ message: 'access unauthorized' });
+      res.status(401).send({ message: "access unauthorized" });
     }
   };
 
@@ -54,10 +54,10 @@ export class UserControllers {
     const { username } = result.data;
 
     if (newUser?.message)
-      return res.status(400).json({ message: 'User Already Exist' });
+      return res.status(400).json({ message: "User Already Exist" });
 
     const token = jwt.sign({ username }, SECRET_JWT_KEY, {
-      expiresIn: '150d',
+      expiresIn: "150d",
     });
     res.status(201).send({ newUser, token });
   };
@@ -67,9 +67,9 @@ export class UserControllers {
 
     const result = await this.UserModel.deleteUser({ id });
 
-    if (result) return res.json({ message: 'User Deleted' });
+    if (result) return res.json({ message: "User Deleted" });
 
-    res.status(404).json({ message: 'User Not Found' });
+    res.status(404).json({ message: "User Not Found" });
   };
 
   updateUser = async (req, res) => {
@@ -80,7 +80,7 @@ export class UserControllers {
 
     const { id } = req.params;
 
-    let encryptedPassword = '';
+    let encryptedPassword = "";
 
     if (result.data.password) {
       encryptedPassword = EncryptPassword(result.data?.password);
@@ -94,7 +94,7 @@ export class UserControllers {
     });
 
     if (!updatedUser) {
-      return res.json({ message: 'User Already Exist' });
+      return res.json({ message: "User Already Exist" });
     } else {
       return res.json(updatedUser);
     }
