@@ -12,7 +12,7 @@ export const createGroupsRouter = ({ GroupModel }) => {
 
   groupRouter.patch('/', groupsController.addLinkToGroup);
 
-  groupRouter.get('/links/:group_id', groupsController.getLinksFromGroup);
+  groupRouter.post('/', groupsController.getLinksFromGroup);
 
   return groupRouter;
 };

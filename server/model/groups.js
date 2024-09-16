@@ -28,11 +28,19 @@ export class GroupModel {
     }
   }
 
-  static async addLinkToGroup({ group_id, link_id }) {
+  static async addLinkToGroup({ group_name, link_id, user_id }) {
     try {
+
+      const [group] = await connection.query(
+        'SELECT * FROM categories WHERE name = ? AND user_id = ?;',
+        [group_name, user_id]
+      )
+
+      const category_id = group[0].id
+
       const [result] = await connection.query(
-        'UPDATE links SET category_id = ? WHERE id = ? ;',
-        [group_id, link_id]
+        'UPDATE links SET category_id = ? WHERE id = ?;',
+        [category_id, link_id]
       );
 
       return result.affectedRows === 1;
@@ -41,11 +49,11 @@ export class GroupModel {
     }
   }
 
-  static async getLinksFromGroup({ group_id }) {
+  static async getLinksFromGroup({ group_name, userId }) {
     try {
       const [groupLinks] = await connection.query(
-        'SELECT L.id, L.title, L.url, L.description, L.user_id, L.category_id, L.created_at FROM links L JOIN categories C ON L.category_id = C.id WHERE C.id = ?;',
-        [group_id]
+        'SELECT L.id, L.title, L.url, L.description, L.user_id, L.category_id, L.created_at FROM links L JOIN categories C ON L.category_id = C.id WHERE C.name = ? AND C.user_id = ?;',
+        [group_name,userId]
       );
 
       return groupLinks;

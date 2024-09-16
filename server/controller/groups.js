@@ -30,11 +30,12 @@ export class GroupControllers {
   };
 
   addLinkToGroup = async (req, res) => {
-    const { group_id, link_id } = req.body;
+    const { group_name, link_id, user_id } = req.body;
 
     const insertedLink = await this.GroupModel.addLinkToGroup({
-      group_id,
+      group_name,
       link_id,
+      user_id,
     });
 
     if (insertedLink) {
@@ -45,9 +46,9 @@ export class GroupControllers {
   };
 
   getLinksFromGroup = async (req, res) => {
-    const { group_id } = req.params;
+    const { group_name, userId } = req.body;
 
-    const result = await this.GroupModel.getLinksFromGroup({ group_id });
+    const result = await this.GroupModel.getLinksFromGroup({ group_name, userId });
 
     if (result) return res.status(201).json(result);
   };
