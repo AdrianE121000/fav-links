@@ -34,6 +34,8 @@ export function Groups() {
     loading.current = false;
   }, [group_name, userId, showGroups]);
 
+  const sortedLinks = userLinks.sort((a, b) => b.id - a.id);
+
   async function onDelete(id) {
     await deleteLink({ id });
     const links = await getLinks(userId);
@@ -76,7 +78,11 @@ export function Groups() {
           <AddIcon />
         </button>
       </div>
-      <Card userLinks={userLinks} onEdit={onEdit} onDelete={onDelete} />
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-2">
+        {sortedLinks.map((link) => (
+          <Card key={link.id} link={link} onEdit={onEdit} onDelete={onDelete} />
+        ))}
+      </div>
       {showModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="p-4 rounded-md shadow-lg">
