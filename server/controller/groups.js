@@ -13,6 +13,14 @@ export class GroupControllers {
     res.json(groups);
   };
 
+  getGroupName = async (req, res) => {
+    const { id } = req.params;
+
+    const groupName = await this.GroupModel.getGroupName({ id });
+
+    res.json(groupName);
+  };
+
   createGroup = async (req, res) => {
     const result = validateGroup(req.body);
     const { user_id } = req.params;

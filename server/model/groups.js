@@ -13,6 +13,15 @@ export class GroupModel {
     return groups;
   }
 
+  static async getGroupName({ id }) {
+    const [groupName] = await connection.query(
+      "SELECT name FROM categories WHERE id = ?;",
+      [id]
+    );
+
+    return groupName;
+  }
+
   static async createGroup({ input, user_id }) {
     const { name } = input;
 

@@ -8,6 +8,8 @@ export const createGroupsRouter = ({ GroupModel }) => {
 
   groupRouter.get("/:id", groupsController.getGroups);
 
+  groupRouter.get("/goupname/:id", groupsController.getGroupName);
+
   groupRouter.post("/:user_id", groupsController.createGroup);
 
   groupRouter.patch("/", groupsController.addLinkToGroup);
