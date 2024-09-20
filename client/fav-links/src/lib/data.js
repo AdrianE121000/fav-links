@@ -192,3 +192,17 @@ export async function insertLinkInGroup({ data }) {
     console.log("error: ", error);
   }
 }
+
+export async function deleteLinkFromGroup(id) {
+  try {
+    const res = await fetch(`http://localhost:3000/groups/${id}`, {
+      method: "DELETE",
+    });
+
+    const result = await res.json();
+
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}

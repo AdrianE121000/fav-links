@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { timeAgo } from "../lib/utils";
 import { DeleteIcon, EditIcon } from "./Icons";
+import { deleteLinkFromGroup } from "../lib/data";
+import { toast } from "sonner";
 
 export function Card({ link, onDelete, onEdit }) {
   const [groupName, setGroupName] = useState("");
@@ -23,6 +25,12 @@ export function Card({ link, onDelete, onEdit }) {
     getGroupName();
   }, [link.category_id]);
 
+  async function removeLinkFromGroup(id) {
+    const link = await deleteLinkFromGroup(id);
+
+    if (link) toast.success("Link was remove from the group");
+  }
+
   return (
     <>
       <div
@@ -44,16 +52,19 @@ export function Card({ link, onDelete, onEdit }) {
             <span>
               {" "}
               {groupName}{" "}
-              {/* <button className="items-center font-semibold rounded bg-red-500 text-white text-xs px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-red-700">
+              <button
+                onClick={() => removeLinkFromGroup(link.id)}
+                className="items-center font-semibold rounded bg-red-500 text-white text-xs px-2 py-1 hover:bg-red-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-red-700"
+              >
                 Remove
-              </button> */}
+              </button>
             </span>
           </p>
         ) : (
           <span>
-            {/* <button className="items-center font-semibold rounded bg-blue-500 text-white text-sm px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700">
+            <button className="items-center font-semibold rounded bg-blue-500 text-white text-sm px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700">
               Add to a group
-            </button> */}
+            </button>
           </span>
         )}
 
