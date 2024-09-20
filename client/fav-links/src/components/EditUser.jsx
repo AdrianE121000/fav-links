@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { editUser } from "../lib/data";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import { LockIcon, OpenIcon } from "./Icons";
 
 export function EditUser() {
@@ -49,7 +49,6 @@ export function EditUser() {
 
   return (
     <>
-      <Toaster richColors theme="dark" />
       <div className="max-w-xs sm:max-w-md mx-auto p-6 bg-neutral-800 text-white shadow-md rounded-md mt-20">
         <h2 className="text-2xl font-bold mb-4">Edit account</h2>
         <em>Just fill in the fields you want to change</em>

@@ -4,7 +4,7 @@ import AppContext from "../context/Context";
 import { useNavigate, NavLink } from "react-router-dom";
 import NavBar from "./NavBar";
 import { LockIcon, OpenIcon } from "./Icons";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 export function SignUp() {
   const { setLogged } = useContext(AppContext);
@@ -61,7 +61,6 @@ export function SignUp() {
   return (
     <>
       <NavBar />
-      <Toaster richColors theme="dark" />
       <div className="max-w-xs sm:max-w-md mx-auto p-6 bg-neutral-800 text-white shadow-md rounded-md mt-20">
         <h2 className="text-2xl font-bold mb-4">Create an account</h2>
         <form onSubmit={handleSubmit}>

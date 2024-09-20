@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { deleteLink, getGroupsLinks, getLinks } from "../lib/data";
 import EditForm from "./EditForm";
 import { AddIcon, CloseIcon } from "./Icons";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import { GroupsModal } from "./GroupsModal";
 
 export function Groups() {
@@ -16,7 +16,7 @@ export function Groups() {
   const [userLinks, setUserLinks] = useState([]);
   const [linkToUpadte, setLinkToUpdate] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [showGroups, setShowLinks] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
 
   useEffect(() => {
     async function getAllLinks() {
@@ -32,7 +32,7 @@ export function Groups() {
 
     getAllLinks();
     loading.current = false;
-  }, [group_name, userId, showGroups]);
+  }, [group_name, userId, showLinks]);
 
   const sortedLinks = userLinks.sort((a, b) => b.id - a.id);
 
@@ -55,7 +55,6 @@ export function Groups() {
 
   return (
     <>
-      <Toaster richColors theme="dark" />
       {loading.current ? (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
@@ -96,7 +95,7 @@ export function Groups() {
           </div>
         </div>
       )}
-      {showGroups && <GroupsModal setShowLinks={setShowLinks} />}
+      {showLinks && <GroupsModal setShowLinks={setShowLinks} />}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { updateLink } from "../lib/data";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 function EditForm({ id, setShowModal }) {
   const [title, setTitle] = useState("");
@@ -29,7 +29,6 @@ function EditForm({ id, setShowModal }) {
   }
   return (
     <>
-      <Toaster richColors theme="dark" />
       <form
         onSubmit={handleSubmit}
         className="bg-neutral-800 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

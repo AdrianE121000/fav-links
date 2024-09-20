@@ -1,5 +1,5 @@
 import { Card } from "./Card";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import { useEffect, useRef, useState } from "react";
 import { deleteLink, getLinks } from "../lib/data";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,6 @@ export function Home() {
 
   return (
     <>
-      <Toaster richColors theme="dark" />
       {loading.current ? (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>

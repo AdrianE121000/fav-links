@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createLink } from "../lib/data";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 export function AddLinks() {
   const [title, setTitle] = useState("");
@@ -33,57 +33,56 @@ export function AddLinks() {
   }
   return (
     <>
-      <Toaster richColors theme='dark' />
-      <div className='w-full max-w-md mx-auto mt-20'>
+      <div className="w-full max-w-md mx-auto mt-20">
         <form
           onSubmit={handleSubmit}
-          className='bg-neutral-800 text-white rounded px-8 pt-6 pb-8 mb-4 shadow-sm shadow-white'
+          className="bg-neutral-800 text-white rounded px-8 pt-6 pb-8 mb-4 shadow-sm shadow-white"
         >
-          <h1 className='text-center text-3xl font-bold'>Add Link</h1>
-          <div className='mb-4'>
-            <label className='block text-sm font-bold mb-2' htmlFor='title'>
+          <h1 className="text-center text-3xl font-bold">Add Link</h1>
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="title">
               Title:
             </label>
             <input
-              className='shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
-              id='title'
-              type='text'
+              className="shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+              id="title"
+              type="text"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className='mb-4'>
-            <label className='block text-sm font-bold mb-2' htmlFor='url'>
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="url">
               URL:
             </label>
             <input
-              className='shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
-              id='url'
+              className="shadow bg-neutral-600 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+              id="url"
               required
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
-          <div className='mb-6'>
+          <div className="mb-6">
             <label
-              className='block text-sm font-bold mb-2'
-              htmlFor='description'
+              className="block text-sm font-bold mb-2"
+              htmlFor="description"
             >
               Description:
             </label>
             <textarea
-              className='shadow bg-neutral-600 resize-none appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline'
-              id='description'
+              className="shadow bg-neutral-600 resize-none appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+              id="description"
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className='flex items-center justify-between'>
+          <div className="flex items-center justify-between">
             <button
-              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline hover:scale-105 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700'
-              type='submit'
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded focus:outline-none focus:shadow-outline hover:scale-105 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700"
+              type="submit"
             >
               Accept
             </button>

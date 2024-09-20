@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { CloseIcon, IconDropDown } from "./Icons";
 import { Link } from "react-router-dom";
 import { createGroup, getGroups } from "../lib/data";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 export function DropDown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +50,6 @@ export function DropDown() {
 
   return (
     <>
-      <Toaster richColors theme="dark" />
       <div className="relative inline-block text-center">
         <div>
           <span className="rounded-md shadow-sm">

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { getLinks, insertLinkInGroup } from "../lib/data";
 import { AddIcon } from "./Icons";
 import { useParams } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 export function GroupsModal({ setShowLinks }) {
   const { group_name } = useParams();
@@ -44,7 +44,6 @@ export function GroupsModal({ setShowLinks }) {
   }
   return (
     <>
-      <Toaster richColors theme="dark" />
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center text-white bg-opacity-50 z-50">
         <div className="bg-neutral-800 w-3/4 sm:w-[300px] p-4 rounded-md shadow-sm shadow-white">
           {loading.current ? (
