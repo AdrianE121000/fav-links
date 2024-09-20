@@ -16,5 +16,7 @@ export const createGroupsRouter = ({ GroupModel }) => {
 
   groupRouter.post("/", groupsController.getLinksFromGroup);
 
+  groupRouter.delete("/:id", groupsController.deleteLinkFromGroup);
+
   return groupRouter;
 };

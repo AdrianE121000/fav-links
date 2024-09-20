@@ -63,4 +63,14 @@ export class GroupControllers {
 
     if (result) return res.status(201).json(result);
   };
+
+  deleteLinkFromGroup = async (req, res) => {
+    const { id } = req.params;
+
+    const result = await this.GroupModel.deleteLinkFromGroup({ id });
+
+    if (result) return res.json({ message: "Link deleted from group" });
+
+    res.status(404).json({ message: "Link Not Found" });
+  };
 }

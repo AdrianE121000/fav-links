@@ -69,4 +69,17 @@ export class GroupModel {
       console.log("se produjo un error");
     }
   }
+
+  static async deleteLinkFromGroup({ id }) {
+    try {
+      const [link] = await connection.query(
+        "UPDATE links SET category_id = null WHERE id = ?;",
+        [id]
+      );
+
+      return link.affectedRows === 1;
+    } catch (error) {
+      console.log("Se produjo un error");
+    }
+  }
 }
