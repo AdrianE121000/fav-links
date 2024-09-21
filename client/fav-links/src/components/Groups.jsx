@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Card } from "./Card";
 import { useEffect, useRef, useState } from "react";
-import { deleteLink, getGroupsLinks, getLinks } from "../lib/data";
+import { deleteLink, getGroupsLinks } from "../lib/data";
 import EditForm from "./EditForm";
 import { AddIcon, CloseIcon } from "./Icons";
 import { toast } from "sonner";
@@ -38,7 +38,11 @@ export function Groups() {
 
   async function onDelete(id) {
     await deleteLink({ id });
-    const links = await getLinks(userId);
+    const data = {
+      group_name,
+      userId,
+    };
+    const links = await getGroupsLinks({ data });
 
     setUserLinks(links);
 
