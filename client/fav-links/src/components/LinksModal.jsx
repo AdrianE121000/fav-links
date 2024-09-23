@@ -1,30 +1,35 @@
 import { useEffect, useRef, useState } from "react";
-import { getGroups, insertLinkInGroup } from "../lib/data";
-import { toast } from "sonner";
+import { getLinks, insertLinkInGroup } from "../lib/data";
 import { AddIcon } from "./Icons";
+import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
-export function GroupsModal({ link_id, setShowGroups }) {
-  const [groups, setGroups] = useState([]);
+export function LinksModal({ setShowLinks }) {
+  const { group_name } = useParams();
+  const [links, setLinks] = useState([]);
   const loading = useRef(true);
 
   const user_id = localStorage.getItem("userID");
 
   useEffect(() => {
-    async function getAllGroups() {
+    async function getAllLinks() {
       loading.current = true;
-      const allGroups = await getGroups(user_id);
+      const allLinks = await getLinks(user_id);
 
-      setGroups(allGroups);
+      const filteredLinks = allLinks.filter((link) => link.category_id == null);
+
+      setLinks(filteredLinks);
     }
 
-    getAllGroups();
+    getAllLinks();
     loading.current = false;
   }, [user_id]);
 
   async function addLinkToGroup(id) {
     const data = {
-      category_id: id,
-      link_id,
+      group_name,
+      link_id: id,
+      user_id,
     };
 
     const result = await insertLinkInGroup({ data });
@@ -34,10 +39,9 @@ export function GroupsModal({ link_id, setShowGroups }) {
     } else {
       toast.success(result?.message);
 
-      setShowGroups(false);
+      setShowLinks(false);
     }
   }
-
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center text-white bg-opacity-50 z-50">
@@ -46,19 +50,19 @@ export function GroupsModal({ link_id, setShowGroups }) {
             <div className="flex items-center justify-center h-screen">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
             </div>
-          ) : groups.length === 0 ? (
+          ) : links.length === 0 ? (
             <div className="text-white mb-5">
-              There are no groups to add this link to
+              There are no link to add to this group
             </div>
           ) : (
-            groups.map((group) => (
+            links.map((link) => (
               <div
-                key={group.id}
-                onClick={() => addLinkToGroup(group.id)}
+                key={link.id}
+                onClick={() => addLinkToGroup(link.id)}
                 className="flex justify-between items-center cursor-pointer border border-white w-full rounded-xl my-2"
               >
                 <p className="line-clamp-1 max-w-[130px] p-1 text-sm px-5 text-white font-bold hover:scale-110 transition duration-500 ease-out">
-                  {group.name}
+                  {link.title}
                 </p>
                 <AddIcon />
               </div>
@@ -66,7 +70,7 @@ export function GroupsModal({ link_id, setShowGroups }) {
           )}
           <div className="flex justify-end">
             <button
-              onClick={(state) => setShowGroups(!state)}
+              onClick={(state) => setShowLinks(!state)}
               className="font-semibold rounded bg-blue-500 text-white text-sm px-2 py-1 hover:bg-blue-900 hover:scale-110 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-blue-700"
             >
               Cancel

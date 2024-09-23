@@ -37,21 +37,30 @@ export class GroupModel {
     }
   }
 
-  static async addLinkToGroup({ group_name, link_id, user_id }) {
+  static async addLinkToGroup({ group_name, link_id, user_id, category_id }) {
     try {
-      const [group] = await connection.query(
-        "SELECT * FROM categories WHERE name = ? AND user_id = ?;",
-        [group_name, user_id]
-      );
+      if (category_id === undefined) {
+        const [group] = await connection.query(
+          "SELECT * FROM categories WHERE name = ? AND user_id = ?;",
+          [group_name, user_id]
+        );
 
-      const category_id = group[0].id;
+        const category_id = group[0].id;
 
-      const [result] = await connection.query(
-        "UPDATE links SET category_id = ? WHERE id = ?;",
-        [category_id, link_id]
-      );
+        const [result] = await connection.query(
+          "UPDATE links SET category_id = ? WHERE id = ?;",
+          [category_id, link_id]
+        );
 
-      return result.affectedRows === 1;
+        return result.affectedRows === 1;
+      } else {
+        const [result] = await connection.query(
+          "UPDATE links SET category_id = ? WHERE id = ?;",
+          [category_id, link_id]
+        );
+
+        return result.affectedRows === 1;
+      }
     } catch (error) {
       console.log("se produjo un error");
     }

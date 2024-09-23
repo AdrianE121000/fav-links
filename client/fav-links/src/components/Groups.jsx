@@ -5,7 +5,7 @@ import { deleteLink, getGroupsLinks } from "../lib/data";
 import EditForm from "./EditForm";
 import { AddIcon, CloseIcon } from "./Icons";
 import { toast } from "sonner";
-import { GroupsModal } from "./GroupsModal";
+import { LinksModal } from "./LinksModal";
 
 export function Groups() {
   const { group_name } = useParams();
@@ -99,7 +99,7 @@ export function Groups() {
           </div>
         </div>
       )}
-      {showLinks && <GroupsModal setShowLinks={setShowLinks} />}
+      {showLinks && <LinksModal setShowLinks={setShowLinks} />}
     </>
   );
 }

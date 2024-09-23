@@ -38,12 +38,13 @@ export class GroupControllers {
   };
 
   addLinkToGroup = async (req, res) => {
-    const { group_name, link_id, user_id } = req.body;
+    const { group_name, link_id, user_id, category_id } = req.body;
 
     const insertedLink = await this.GroupModel.addLinkToGroup({
       group_name,
       link_id,
       user_id,
+      category_id,
     });
 
     if (insertedLink) {
