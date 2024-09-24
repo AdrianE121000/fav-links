@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { Card } from "./Card";
 import { useEffect, useRef, useState } from "react";
-import { deleteLink, getGroupsLinks } from "../lib/data";
+import { deleteLink, deleteLinkFromGroup, getGroupsLinks } from "../lib/data";
 import EditForm from "./EditForm";
 import { AddIcon, CloseIcon } from "./Icons";
 import { toast } from "sonner";
 import { LinksModal } from "./LinksModal";
+import { sorted } from "../lib/utils";
 
 export function Groups() {
   const { group_name } = useParams();
@@ -34,7 +35,7 @@ export function Groups() {
     loading.current = false;
   }, [group_name, userId, showLinks]);
 
-  const sortedLinks = userLinks.sort((a, b) => b.id - a.id);
+  const sortedLinks = sorted(userLinks);
 
   async function onDelete(id) {
     await deleteLink({ id });
@@ -48,9 +49,24 @@ export function Groups() {
 
     toast.success("Link deleted");
   }
+
   function onEdit(id) {
     setShowModal(true);
     setLinkToUpdate(id);
+  }
+
+  async function removeLinkFromGroup(id) {
+    const link = await deleteLinkFromGroup(id);
+
+    const data = {
+      group_name,
+      userId,
+    };
+    const links = await getGroupsLinks({ data });
+
+    setUserLinks(links);
+
+    if (link) toast.success("Link was remove from the group");
   }
 
   async function addToGroup() {
@@ -83,7 +99,13 @@ export function Groups() {
       </div>
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-2">
         {sortedLinks.map((link) => (
-          <Card key={link.id} link={link} onEdit={onEdit} onDelete={onDelete} />
+          <Card
+            key={link.id}
+            link={link}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            removeLinkFromGroup={removeLinkFromGroup}
+          />
         ))}
       </div>
       {showModal && (

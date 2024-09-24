@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { timeAgo } from "../lib/utils";
 import { DeleteIcon, EditIcon } from "./Icons";
-import { deleteLinkFromGroup } from "../lib/data";
-import { toast } from "sonner";
 import { GroupsModal } from "./GroupsModal";
 
-export function Card({ link, onDelete, onEdit }) {
+export function Card({ link, onDelete, onEdit, removeLinkFromGroup }) {
   const [groupName, setGroupName] = useState("");
   const [showGroups, setShowGroups] = useState(false);
 
@@ -20,18 +18,12 @@ export function Card({ link, onDelete, onEdit }) {
       } else {
         const result = await res.json();
 
-        setGroupName(result[0].name);
+        setGroupName(result[0]?.name);
       }
     };
 
     getGroupName();
   }, [link.category_id]);
-
-  async function removeLinkFromGroup(id) {
-    const link = await deleteLinkFromGroup(id);
-
-    if (link) toast.success("Link was remove from the group");
-  }
 
   return (
     <>

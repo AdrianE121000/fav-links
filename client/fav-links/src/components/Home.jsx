@@ -1,11 +1,12 @@
 import { Card } from "./Card";
 import { toast } from "sonner";
 import { useEffect, useRef, useState } from "react";
-import { deleteLink, getLinks } from "../lib/data";
+import { deleteLink, deleteLinkFromGroup, getLinks } from "../lib/data";
 import { useNavigate } from "react-router-dom";
 
 import EditForm from "./EditForm";
 import { CloseIcon } from "./Icons";
+import { sorted } from "../lib/utils";
 
 export function Home() {
   const userId = localStorage.getItem("userID");
@@ -38,10 +39,23 @@ export function Home() {
 
     toast.success("Link deleted");
   }
+
   function onEdit(id) {
     setShowModal(true);
     setLinkToUpdate(id);
   }
+
+  async function removeLinkFromGroup(id) {
+    const link = await deleteLinkFromGroup(id);
+
+    const links = await getLinks(userId);
+
+    setUserLinks(links);
+
+    if (link) toast.success("Link was remove from the group");
+  }
+
+  const sortedLinks = sorted(userLinks);
 
   return (
     <>
@@ -63,8 +77,14 @@ export function Home() {
         )
       )}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-2">
-        {userLinks.map((link) => (
-          <Card key={link.id} link={link} onEdit={onEdit} onDelete={onDelete} />
+        {sortedLinks.map((link) => (
+          <Card
+            key={link.id}
+            link={link}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            removeLinkFromGroup={removeLinkFromGroup}
+          />
         ))}
       </div>
       {showModal && (
