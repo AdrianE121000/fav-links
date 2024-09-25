@@ -84,6 +84,7 @@ export function Home() {
             onEdit={onEdit}
             onDelete={onDelete}
             removeLinkFromGroup={removeLinkFromGroup}
+            setUserLinks={setUserLinks}
           />
         ))}
       </div>

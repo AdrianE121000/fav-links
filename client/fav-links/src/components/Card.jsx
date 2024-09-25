@@ -3,7 +3,13 @@ import { timeAgo } from "../lib/utils";
 import { DeleteIcon, EditIcon } from "./Icons";
 import { GroupsModal } from "./GroupsModal";
 
-export function Card({ link, onDelete, onEdit, removeLinkFromGroup }) {
+export function Card({
+  link,
+  onDelete,
+  onEdit,
+  removeLinkFromGroup,
+  setUserLinks,
+}) {
   const [groupName, setGroupName] = useState("");
   const [showGroups, setShowGroups] = useState(false);
 
@@ -83,7 +89,11 @@ export function Card({ link, onDelete, onEdit, removeLinkFromGroup }) {
         </div>
       </div>
       {showGroups && (
-        <GroupsModal link_id={link.id} setShowGroups={setShowGroups} />
+        <GroupsModal
+          link_id={link.id}
+          setShowGroups={setShowGroups}
+          setUserLinks={setUserLinks}
+        />
       )}
     </>
   );

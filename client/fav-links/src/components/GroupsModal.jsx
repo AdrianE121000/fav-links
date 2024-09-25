@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { getGroups, insertLinkInGroup } from "../lib/data";
+import { getGroups, getLinks, insertLinkInGroup } from "../lib/data";
 import { toast } from "sonner";
 import { AddIcon } from "./Icons";
 
-export function GroupsModal({ link_id, setShowGroups }) {
+export function GroupsModal({ link_id, setShowGroups, setUserLinks }) {
   const [groups, setGroups] = useState([]);
   const loading = useRef(true);
 
@@ -30,12 +30,16 @@ export function GroupsModal({ link_id, setShowGroups }) {
     const result = await insertLinkInGroup({ data });
 
     if (result?.error) {
-      toast.error("Something went wrong");
-    } else {
-      toast.success(result?.message);
-
-      setShowGroups(false);
+      return toast.error("Something went wrong");
     }
+
+    const links = await getLinks(user_id);
+
+    setUserLinks(links);
+
+    toast.success(result?.message);
+
+    setShowGroups(false);
   }
 
   return (
